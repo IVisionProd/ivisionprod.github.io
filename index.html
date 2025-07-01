@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IVision Produções</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background-color: rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      animation: slideUp 1.2s ease-in-out;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00d8ff;
+    }
+    .services, .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background-color: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background-color: rgba(0,0,0,0.3);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>IVision Produções</h1>
+    <p>Soluções criativas em vídeo, cursos e conteúdo digital</p>
+  </header>
+
+  <section>
+    <h2>Serviços</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Produção de Vídeos</h3>
+        <p>Filmagem, edição e roteirização de vídeos promocionais, eventos e conteúdos digitais.</p>
+      </div>
+      <div class="card">
+        <h3>Consultoria de YouTube</h3>
+        <p>Ajuda para fazer seu canal crescer com estratégias personalizadas e análise de desempenho.</p>
+      </div>
+      <div class="card">
+        <h3>Criação de Reels e Shorts</h3>
+        <p>Vídeos curtos otimizados para redes sociais como Instagram, TikTok e YouTube Shorts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Portfólio</h2>
+    <div class="portfolio">
+      <div class="card">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <p>Projeto destaque com edição criativa e storytelling envolvente.</p>
+      </div>
+      <!-- Adicione mais vídeos aqui -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Contato</h2>
+    <p>Fale conosco pelo <a href="https://wa.me/SEUNUMERO" target="_blank" style="color:#00d8ff;">WhatsApp</a> ou envie uma mensagem pelo formulário abaixo:</p>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORMURL/viewform?embedded=true" width="100%" height="500">Carregando…</iframe>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 IVision Produções – Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
