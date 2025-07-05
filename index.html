@@ -1,126 +1,109 @@
+<!-- index.html - Site inicial IVision Produções -->
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IVision Produções</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background-color: #111;
       color: #fff;
+      line-height: 1.6;
     }
     header {
-      padding: 2rem;
+      background: #000;
+      padding: 1.5rem;
       text-align: center;
-      background-color: rgba(0,0,0,0.2);
-      animation: fadeIn 2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
     header h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      animation: slideUp 1.2s ease-in-out;
-    }
-    h2 {
       font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00d8ff;
+      color: #00FFD1;
+      font-weight: 800;
     }
-    .services, .portfolio {
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    nav a {
+      background: #00FFD1;
+      color: #000;
+      padding: 0.7rem 1.2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: #00bfa6;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    .channel-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
     }
-    .card {
-      background-color: rgba(255,255,255,0.05);
-      padding: 1.5rem;
-      border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .channel-card {
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 1rem;
+      transition: 0.3s;
+      border: 1px solid #333;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-    iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
+    .channel-card:hover {
+      transform: scale(1.03);
+      border-color: #00FFD1;
     }
     footer {
-      text-align: center;
+      margin-top: 4rem;
       padding: 2rem;
+      text-align: center;
       font-size: 0.9rem;
-      background-color: rgba(0,0,0,0.3);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>IVision Produções</h1>
-    <p>Soluções criativas em vídeo, cursos e conteúdo digital</p>
+    <nav>
+      <a href="#canais">Canais</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </header>
-
-  <section>
-    <h2>Serviços</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Produção de Vídeos</h3>
-        <p>Filmagem, edição e roteirização de vídeos promocionais, eventos e conteúdos digitais.</p>
-      </div>
-      <div class="card">
-        <h3>Consultoria de YouTube</h3>
-        <p>Ajuda para fazer seu canal crescer com estratégias personalizadas e análise de desempenho.</p>
-      </div>
-      <div class="card">
-        <h3>Criação de Reels e Shorts</h3>
-        <p>Vídeos curtos otimizados para redes sociais como Instagram, TikTok e YouTube Shorts.</p>
-      </div>
+  <main>
+    <h2 id="canais">Nossos Canais</h2>
+    <div class="channel-grid">
+      <div class="channel-card">IVision Mistérios</div>
+      <div class="channel-card">IVision Fé</div>
+      <div class="channel-card">IVision Humor</div>
+      <div class="channel-card">IVision Beats</div>
+      <div class="channel-card">IVision Saber</div>
+      <div class="channel-card">IVision Games</div>
+      <div class="channel-card">IVision Casts</div>
+      <div class="channel-card">IVision Clips</div>
     </div>
-  </section>
-
-  <section>
-    <h2>Portfólio</h2>
-    <div class="portfolio">
-      <div class="card">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-        <p>Projeto destaque com edição criativa e storytelling envolvente.</p>
-      </div>
-      <!-- Adicione mais vídeos aqui -->
-    </div>
-  </section>
-
-  <section>
-    <h2>Contato</h2>
-    <p>Fale conosco pelo <a href="https://wa.me/+5584996585971" target="_blank" style="color:#00d8ff;">WhatsApp</a> ou envie uma mensagem pelo formulário abaixo:</p>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORMURL/viewform?embedded=true" width="100%" height="500">Carregando…</iframe>
-  </section>
-
+    <h2 id="cursos" style="margin-top: 4rem;">Cursos em Destaque</h2>
+    <p>Curso gratuito: Como Criar Conteúdo que Viraliza (em breve)</p>
+    <h2 id="contato" style="margin-top: 4rem;">Contato</h2>
+    <p>contato@ivision.art.br</p>
+  </main>
   <footer>
-    <p>&copy; 2025 IVision Produções – Todos os direitos reservados</p>
+    &copy; 2025 IVision Produções. Todos os direitos reservados.
   </footer>
 </body>
 </html>
