@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop de Martelos - União Master</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Bloquear impressão e PDF */
+        @media print {
+            body {
+                display: none !important;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #333;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+            user-select: none; /* Dificulta cópia de texto */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Proteção contra print screen com overlay */
+        body::before {
+            content: 'UNIÃO MASTER - Conteúdo Exclusivo';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            z-index: -1;
+            pointer-events: none;
+            font-size: 0;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 215, 0, 0.08);
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            white-space: nowrap;
+            z-index: 1;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #8b0000 100%);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #ffd700;
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 5px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            display: block;
+        }
+
+        .header h1 {
+            color: #ffd700;
+            font-size: 42px;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .header h2 {
+            color: #ff6b6b;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .content {
+            padding: 40px;
+            background: white;
+            position: relative;
+        }
+
+        .title-section {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            border-left: 6px solid #ff6b6b;
+        }
+
+        .title-section h3 {
+            color: #1a1a2e;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #ffd700;
+        }
+
+        .section h4 {
+            color: #0f3460;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe4b5 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #4ecdc4;
+            font-size: 16px;
+            line-height: 1.6;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tip-list li strong {
+            color: #0f3460;
+            font-weight: 700;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff0f0 0%, #ffe6e6 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ff6b6b;
+            margin: 20px 0;
+        }
+
+        .warning-box p {
+            color: #8b0000;
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            padding: 25px;
+            text-align: center;
+            border-top: 5px solid #ffd700;
+        }
+
+        .footer p {
+            color: #ffd700;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer .date {
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-right: 5px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 800;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .protection-notice {
+            background: rgba(139, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #ff6b6b;
+        }
+
+        .protection-notice p {
+            color: #8b0000;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header h2 {
+                font-size: 18px;
+            }
+
+            .watermark {
+                font-size: 60px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">UNIÃO MASTER</div>
+    
+    <div class="container">
+        <div class="header">
+            <!-- IMPORTANTE: Substitua o caminho abaixo pelo caminho da sua imagem no GitHub -->
+            <img src="./images/logo-uniao-master.png" 
+                 alt="União Master Logo" 
+                 class="logo"
+                 onerror="this.style.display='none'">
+            <h1>UNIÃO MASTER</h1>
+            <h2>⭐ DICAS DE OURO ⭐</h2>
+        </div>
+
+        <div class="content">
+            <div class="title-section">
+                <h3><span class="emoji">🎯</span>Entendendo o DROP de Martelos no Evento da Equipe</h3>
+                <p style="color: #333; margin-top: 10px; font-size: 16px;">Muitos ainda ficam na dúvida sobre o que significa o <em>drop</em> e por que às vezes parece que o jogo "seca" os martelos mesmo girando muito.</p>
+            </div>
+
+            <div class="section">
+                <h4><span class="emoji">💡</span>O que é o DROP</h4>
+                <p>É a taxa de aparição dos martelos nos giros.</p>
+                <p>Quando o jogo está em fase boa, quase todo giro rende martelos.</p>
+                <p><strong>Mas em certos momentos o sistema "segura" o drop</strong> — e aí você gasta giros e ganha muito pouco.</p>
+            </div>
+
+            <div class="section">
+                <h4><span class="emoji">🔍</span>Como Identificar se o DROP está Travado</h4>
+                <ul class="tip-list">
+                    <li>Você faz <strong>2.000 giros</strong> e ganha <strong>menos de 1.500 martelos</strong> → <span style="color: #ff6b6b; font-weight: 700;">o drop está ruim</span></li>
+                    <li>Você faz <strong>2.000 giros</strong> e ganha <strong>2.500 martelos ou mais</strong> → <span style="color: #27ae60; font-weight: 700;">o drop está ótimo</span></li>
+                    <li>Quando o drop está travado, <strong>insistir só gasta giros sem retorno</strong></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h4><span class="emoji">⚙️</span>O que Fazer Quando o DROP Trava</h4>
+                <ul class="tip-list">
+                    <li><span class="step-number">1</span><strong>Pare de girar por algumas horas</strong> — o jogo precisa de "respiro" pra soltar novamente</li>
+                    <li><span class="step-number">2</span>Faça <strong>200 giros de teste</strong> depois da pausa pra ver se o drop voltou</li>
+                    <li><span class="step-number">3</span>Só volte a girar pesado se perceber que os martelos estão caindo com constância</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4><span class="emoji">🧭</span>Por que Isso é Importante</h4>
+                <p><strong>Quem entende o drop economiza giros, rende mais martelos e ajuda a equipe a alcançar as metas com menos esforço.</strong></p>
+                <p>Girando com drop travado, você só desperdiça giros e atrapalha seu próprio progresso.</p>
+            </div>
+
+            <div class="warning-box">
+                <p><span class="emoji">⚔️</span>Por isso, antes de acelerar, <strong>sempre observe se o jogo está premiando bem</strong>.</p>
+                <p style="margin-top: 10px;">Trabalhar o drop certo é o segredo dos times que vencem os grandes eventos.</p>
+            </div>
+
+            <div class="protection-notice">
+                <p>🔒 Conteúdo exclusivo da União Master • Proibida reprodução sem autorização</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><span class="emoji">🔰</span>《 UNIÃO MASTER 》</p>
+            <p style="font-size: 18px; margin-top: 5px;">Força, Honra e Lealdade!</p>
+            <p style="font-size: 16px; margin-top: 10px;">✨ Juntos somos invencíveis! ✨</p>
+            <p class="date">Material publicado em 08/11/2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Desabilitar menu de contexto (botão direito)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Desabilitar Ctrl+P (imprimir)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                alert('⚠️ A impressão deste conteúdo está desabilitada.\n\nConteúdo exclusivo da União Master.');
+                return false;
+            }
+            // Desabilitar Ctrl+S (salvar)
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+            // Desabilitar F12 (DevTools)
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Detectar DevTools aberto
+        const devtools = /./;
+        devtools.toString = function() {
+            this.opened = true;
+        }
+        
+        console.log('%c🔒 União Master', 'font-size: 20px; font-weight: bold; color: #ffd700;');
+        console.log('%cConteúdo protegido', 'font-size: 14px; color: #ff6b6b;');
+    </script>
+</body>
+</html>
