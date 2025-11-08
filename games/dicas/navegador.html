@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dicas de Ouro - União Master</title>
+  <link rel="icon" type="image/png" href="../../favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    
+    body { 
+      background: linear-gradient(135deg, #0c151f 0%, #1a1a2e 100%); 
+      color: #fff; 
+      line-height: 1.6; 
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header com navegação */
+    .nav-header {
+      background: rgba(12, 21, 31, 0.95);
+      padding: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .nav-group {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .nav-btn {
+      padding: 0.6rem 1.2rem;
+      background: #FFC857;
+      color: #000;
+      border: none;
+      border-radius: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .nav-btn:hover:not(:disabled) {
+      background: #FFD877;
+      transform: translateY(-2px);
+    }
+    
+    .nav-btn:disabled {
+      background: #555;
+      color: #999;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    
+    .nav-btn.home {
+      background: #27ae60;
+      color: white;
+    }
+    
+    .nav-btn.home:hover {
+      background: #2ecc71;
+    }
+    
+    .nav-btn.games {
+      background: #3498db;
+      color: white;
+    }
+    
+    .nav-btn.games:hover {
+      background: #5dade2;
+    }
+    
+    /* Área de conteúdo */
+    .content-area {
+      flex: 1;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0;
+      position: relative;
+    }
+    
+    .dica-frame {
+      width: 100%;
+      min-height: calc(100vh - 80px);
+      border: none;
+      background: white;
+    }
+    
+    /* Loading spinner */
+    .loading {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 999;
+    }
+    
+    .loading.active {
+      display: block;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #333;
+      border-top: 5px solid #FFC857;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Info da dica atual */
+    .dica-info {
+      padding: 0.5rem 1rem;
+      background: rgba(255, 200, 87, 0.2);
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      color: #FFC857;
+      font-weight: 600;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      
+      .nav-group {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .nav-btn {
+        flex: 1;
+        justify-content: center;
+      }
+      
+      .dica-info {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header de Navegação -->
+  <div class="nav-header">
+    <div class="nav-container">
+      <!-- Grupo esquerdo: Home e Games -->
+      <div class="nav-group">
+        <a href="../../index.html" class="nav-btn home">🏠 Home</a>
+        <a href="../index.html" class="nav-btn games">🎮 IVision Games</a>
+      </div>
+      
+      <!-- Centro: Info da dica -->
+      <div class="dica-info" id="dicaInfo">
+        📖 Dica 1 de 6
+      </div>
+      
+      <!-- Grupo direito: Navegação entre dicas -->
+      <div class="nav-group">
+        <button class="nav-btn" id="btnAnterior" onclick="navegarDica('anterior')">
+          ← Anterior
+        </button>
+        <button class="nav-btn" id="btnProxima" onclick="navegarDica('proxima')">
+          Próxima →
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Loading -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="margin-top: 1rem; color: #FFC857;">Carregando dica...</p>
+  </div>
+  
+  <!-- Área de conteúdo (iframe) -->
+  <div class="content-area">
+    <iframe id="dicaFrame" class="dica-frame" src=""></iframe>
+  </div>
+
+  <script>
+    // Lista de dicas disponíveis
+    const dicas = [
+      {
+        id: 1,
+        arquivo: 'drop-martelos.html',
+        titulo: 'Drop de Martelos',
+        disponivel: true
+      },
+      {
+        id: 2,
+        arquivo: 'gestao-moedas.html',
+        titulo: 'Gestão de Moedas',
+        disponivel: false
+      },
+      {
+        id: 3,
+        arquivo: 'defesa-estrategica.html',
+        titulo: 'Defesa Estratégica',
+        disponivel: false
+      },
+      {
+        id: 4,
+        arquivo: 'otimizacao-spins.html',
+        titulo: 'Otimização de Spins',
+        disponivel: false
+      },
+      {
+        id: 5,
+        arquivo: 'sistema-cartas.html',
+        titulo: 'Sistema de Cartas',
+        disponivel: false
+      },
+      {
+        id: 6,
+        arquivo: 'trabalho-equipe.html',
+        titulo: 'Trabalho em Equipe',
+        disponivel: false
+      }
+    ];
+    
+    let dicaAtual = 0;
+    
+    // Inicializar
+    window.onload = function() {
+      // Verificar se há um parâmetro na URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const dicaParam = urlParams.get('dica');
+      
+      if (dicaParam) {
+        const index = dicas.findIndex(d => d.arquivo === dicaParam);
+        if (index !== -1) {
+          dicaAtual = index;
+        }
+      }
+      
+      carregarDica(dicaAtual);
+    };
+    
+    // Carregar dica
+    function carregarDica(index) {
+      const dica = dicas[index];
+      const frame = document.getElementById('dicaFrame');
+      const loading = document.getElementById('loading');
+      const info = document.getElementById('dicaInfo');
+      const btnAnterior = document.getElementById('btnAnterior');
+      const btnProxima = document.getElementById('btnProxima');
+      
+      // Verificar se a dica está disponível
+      if (!dica.disponivel) {
+        alert('🔒 Esta dica ainda não está disponível!\n\nEm breve novas dicas serão adicionadas.');
+        return;
+      }
+      
+      // Mostrar loading
+      loading.classList.add('active');
+      
+      // Atualizar URL sem recarregar a página
+      const newUrl = `${window.location.pathname}?dica=${dica.arquivo}`;
+      window.history.pushState({dica: index}, '', newUrl);
+      
+      // Carregar iframe
+      frame.src = dica.arquivo;
+      
+      // Atualizar info
+      info.textContent = `📖 ${dica.titulo} (${index + 1} de ${dicas.length})`;
+      
+      // Atualizar botões
+      btnAnterior.disabled = (index === 0);
+      btnProxima.disabled = (index === dicas.length - 1);
+      
+      // Esconder loading quando carregar
+      frame.onload = function() {
+        loading.classList.remove('active');
+      };
+    }
+    
+    // Navegar entre dicas
+    function navegarDica(direcao) {
+      if (direcao === 'anterior' && dicaAtual > 0) {
+        dicaAtual--;
+        carregarDica(dicaAtual);
+      } else if (direcao === 'proxima' && dicaAtual < dicas.length - 1) {
+        // Verificar se a próxima dica está disponível
+        if (dicas[dicaAtual + 1].disponivel) {
+          dicaAtual++;
+          carregarDica(dicaAtual);
+        } else {
+          alert('🔜 A próxima dica ainda não está disponível!\n\nEm breve mais conteúdo será adicionado.');
+        }
+      }
+    }
+    
+    // Voltar/Avançar do navegador
+    window.onpopstate = function(event) {
+      if (event.state && event.state.dica !== undefined) {
+        dicaAtual = event.state.dica;
+        carregarDica(dicaAtual);
+      }
+    };
+  </script>
+</body>
+</html>
