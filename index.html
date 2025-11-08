@@ -17,8 +17,36 @@
     nav a:hover { background: #FCF1D1; }
     main { padding: 2rem; text-align: center; }
     .channel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
-    .channel-card { background: #1e1e1e; padding: 1rem; border-radius: 1rem; transition: 0.3s; border: 1px solid #333; }
+    .channel-card { background: #1e1e1e; padding: 1rem; border-radius: 1rem; transition: 0.3s; border: 1px solid #333; cursor: default; }
     .channel-card:hover { transform: scale(1.03); border-color: #FFC857; }
+    
+    /* Estilo especial para cards clicáveis */
+    .channel-card.clickable { 
+      cursor: pointer; 
+      position: relative;
+      overflow: hidden;
+    }
+    .channel-card.clickable::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 200, 87, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+    .channel-card.clickable:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    .channel-card.clickable:hover {
+      border-color: #FFC857;
+      box-shadow: 0 0 20px rgba(255, 200, 87, 0.4);
+    }
+    
     .form-container { max-width: 500px; margin: 2rem auto; text-align: left; }
     .form-container input, .form-container textarea { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border-radius: 8px; border: none; background: #222; color: #fff; }
     .form-container button { padding: 0.8rem 1.5rem; background: #FFC857; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
@@ -82,7 +110,9 @@
       <div class="channel-card">IVision Humor</div>
       <div class="channel-card">IVision Beats</div>
       <div class="channel-card">IVision Saber</div>
-      <div class="channel-card">IVision Games</div>
+      <div class="channel-card clickable" onclick="window.location.href='games/index.html'">
+        IVision Games 🎮
+      </div>
       <div class="channel-card">IVision Casts</div>
       <div class="channel-card">IVision Clips</div>
     </div>
