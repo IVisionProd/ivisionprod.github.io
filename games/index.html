@@ -3,255 +3,624 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IVision Games - União Master</title>
-  <link rel="icon" type="image/png" href="../favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>IVision Games</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { 
-      background: linear-gradient(135deg, #0c151f 0%, #1a1a2e 50%, #16213e 100%); 
-      color: #fff; 
-      line-height: 1.6; 
+
+    body {
+      background: linear-gradient(135deg, #0c151f 0%, #1a1a2e 50%, #16213e 100%);
+      color: #fff;
+      line-height: 1.6;
       min-height: 100vh;
     }
-    
-    header { 
-      background: rgba(12, 21, 31, 0.9); 
-      padding: 2rem 1.5rem; 
-      text-align: center; 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
+
+    /* ══════════════════════════════
+       TOP NAV
+    ══════════════════════════════ */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 14, 22, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 200, 87, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
     }
-    
-    header h1 { 
-      font-size: 2.5rem; 
-      color: #FFC857; 
-      font-weight: 800; 
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+    .nav-brand {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #FFC857;
+      letter-spacing: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
     }
-    
-    header p {
-      margin-top: 0.5rem;
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 2rem;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .nav-btn.active {
+      color: #0c151f;
+      background: #FFC857;
+      border-color: #FFC857;
+      font-weight: 700;
+    }
+
+    .nav-btn.rogi-btn {
+      color: #E74C3C;
+      border-color: rgba(231, 76, 60, 0.3);
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+    }
+
+    .nav-btn.rogi-btn:hover {
+      background: rgba(231, 76, 60, 0.12);
+      border-color: rgba(231, 76, 60, 0.6);
+      color: #ff6b5b;
+    }
+
+    .nav-btn.rogi-btn.active {
+      background: #8B0000;
+      border-color: #C0392B;
+      color: #E6B020;
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #FFC857;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(10, 14, 22, 0.98);
+      border-bottom: 1px solid rgba(255, 200, 87, 0.15);
+      padding: 1rem 1.5rem;
+      gap: 6px;
+    }
+
+    .mobile-menu .nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 16px;
+      border-radius: 0.75rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    /* ══════════════════════════════
+       SECTIONS
+    ══════════════════════════════ */
+    .section-page { display: none; }
+    .section-page.active { display: block; }
+
+    /* ══════════════════════════════
+       HOME SECTION
+    ══════════════════════════════ */
+    .hero {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-logo {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      border: 4px solid #FFC857;
+      box-shadow: 0 0 40px rgba(255, 200, 87, 0.25);
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-placeholder {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      border: 4px solid #FFC857;
+      background: rgba(255, 200, 87, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      color: #FFC857;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      margin-top: 1rem;
       color: #aaa;
       font-size: 1.1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    
-    .back-button {
+
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .home-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.25rem;
+      padding: 2rem 1.75rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .home-card.uniao::before { background: linear-gradient(90deg, #FFC857, #FFD700, #FFA500); }
+    .home-card.rogi::before  { background: linear-gradient(90deg, #8B0000, #C0392B, #E74C3C); }
+
+    .home-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255, 200, 87, 0.3);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .home-card.rogi:hover {
+      border-color: rgba(231, 76, 60, 0.35);
+      box-shadow: 0 16px 40px rgba(139,0,0,0.3);
+    }
+
+    .hc-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+    .hc-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: #FFC857; }
+    .home-card.rogi .hc-title { color: #E74C3C; }
+    .hc-desc { font-size: 0.9rem; color: #aaa; line-height: 1.6; }
+
+    .hc-badge {
       display: inline-block;
       margin-top: 1rem;
-      padding: 0.6rem 1.5rem;
-      background: #FFC857;
-      color: #000;
-      text-decoration: none;
-      border-radius: 2rem;
+      padding: 4px 12px;
+      border-radius: 1rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      transition: 0.3s;
-    }
-    
-    .back-button:hover {
-      background: #FFD877;
-      transform: translateY(-2px);
-    }
-    
-    main { 
-      padding: 3rem 2rem; 
-      max-width: 1200px; 
-      margin: 0 auto; 
-    }
-    
-    .section-title {
-      font-size: 2rem;
+      background: rgba(255,200,87,0.12);
       color: #FFC857;
-      margin-bottom: 1rem;
+      border: 1px solid rgba(255,200,87,0.25);
+    }
+
+    .home-card.rogi .hc-badge {
+      background: rgba(139,0,0,0.2);
+      color: #E74C3C;
+      border-color: rgba(192,57,43,0.35);
+    }
+
+    /* ══════════════════════════════
+       UNIÃO MASTER SECTION
+    ══════════════════════════════ */
+    .section-header {
+      background: rgba(12, 21, 31, 0.85);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,200,87,0.1);
+    }
+
+    .section-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #FFC857;
+      font-weight: 800;
+    }
+
+    .section-header p {
+      margin-top: 0.5rem;
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    main {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: #FFC857;
+      margin-bottom: 0.75rem;
       text-align: center;
       font-weight: 800;
     }
-    
+
     .section-subtitle {
       text-align: center;
       color: #aaa;
       margin-bottom: 3rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
-    
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .logo-uniao {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 4px solid #FFC857;
+      box-shadow: 0 8px 32px rgba(255, 200, 87, 0.3);
+      object-fit: cover;
+    }
+
     .dicas-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1.5rem;
     }
-    
+
     .dica-card {
       background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
-      padding: 2rem;
-      border-radius: 1.5rem;
-      border: 2px solid #333;
-      transition: 0.3s;
+      padding: 1.75rem;
+      border-radius: 1.25rem;
+      border: 1.5px solid #333;
+      transition: all 0.3s;
       cursor: pointer;
       position: relative;
       overflow: hidden;
     }
-    
+
     .dica-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
-      height: 5px;
+      height: 4px;
       background: linear-gradient(90deg, #FFC857, #FFD700, #FFA500);
     }
-    
+
     .dica-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       border-color: #FFC857;
-      box-shadow: 0 10px 30px rgba(255, 200, 87, 0.3);
+      box-shadow: 0 12px 32px rgba(255, 200, 87, 0.25);
     }
-    
-    .dica-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    
+
+    .dica-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+
     .dica-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #FFC857;
       margin-bottom: 0.5rem;
       font-weight: 700;
     }
-    
+
     .dica-description {
       color: #ccc;
       margin-bottom: 1rem;
       line-height: 1.6;
+      font-size: 0.92rem;
     }
-    
+
     .dica-status {
       display: inline-block;
-      padding: 0.3rem 0.8rem;
+      padding: 3px 10px;
       background: #27ae60;
       color: white;
       border-radius: 1rem;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
     }
-    
-    .dica-status.em-breve {
-      background: #95a5a6;
+
+    .dica-status.em-breve { background: #555; color: #aaa; }
+
+    /* ══════════════════════════════
+       ROGI SECTION (iframe embed)
+    ══════════════════════════════ */
+    .rogi-container {
+      width: 100%;
+      min-height: calc(100vh - 60px);
+      position: relative;
     }
-    
-    .logo-section {
+
+    .rogi-frame {
+      width: 100%;
+      border: none;
+      display: block;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      padding: 2rem;
       text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .logo-uniao {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto;
-      border-radius: 50%;
-      border: 5px solid #FFC857;
-      box-shadow: 0 10px 40px rgba(255, 200, 87, 0.4);
-    }
-    
-    footer { 
-      margin-top: 4rem; 
-      padding: 2rem; 
-      text-align: center; 
-      font-size: 0.9rem; 
-      color: #aaa; 
+      font-size: 0.85rem;
+      color: #aaa;
       background: rgba(12, 21, 31, 0.5);
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
-    
+
+    footer strong { color: #FFC857; }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
     @media (max-width: 768px) {
-      header h1 { font-size: 1.8rem; }
+      .topnav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .home-cards { grid-template-columns: 1fr; }
       .dicas-grid { grid-template-columns: 1fr; }
+      .hero { padding: 3rem 1.5rem 2rem; }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-menu { display: none !important; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🎮 IVision Games</h1>
-    <p>União Master - Dicas de Ouro para Coin Master</p>
-    <a href="../index.html" class="back-button">← Voltar ao Início</a>
-  </header>
 
-  <main>
-    <div class="logo-section">
-      <img src="../images/logo-uniao-master.png" alt="União Master" class="logo-uniao" onerror="this.style.display='none'">
+  <!-- ══ TOP NAV ══ -->
+  <nav class="topnav">
+    <span class="nav-brand" onclick="showSection('home')">IVISION GAMES</span>
+
+    <div class="nav-links">
+      <button class="nav-btn active"    onclick="showSection('home')">🏠 Início</button>
+      <button class="nav-btn"           onclick="showSection('uniao')">🎮 União Master</button>
+      <button class="nav-btn rogi-btn"  onclick="showSection('rogi')">⚔ ROGI</button>
     </div>
-    
-    <h2 class="section-title">⭐ Dicas de Ouro</h2>
-    <p class="section-subtitle">Material exclusivo para membros da União Master</p>
-    
-    <div class="dicas-grid">
-      <!-- Dica 1 - Drop de Martelos -->
-      <div class="dica-card" onclick="window.location.href='dicas/navegador.html?dica=drop-martelos.html'">
-        <span class="dica-icon">🎯</span>
-        <h3 class="dica-title">Drop de Martelos</h3>
-        <p class="dica-description">
-          Entenda como funciona o sistema de drop dos martelos e maximize seus giros durante os eventos da equipe.
-        </p>
-        <span class="dica-status">Disponível</span>
+
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="nav-btn" onclick="showSection('home');  toggleMobile()">🏠 Início</button>
+    <button class="nav-btn" onclick="showSection('uniao'); toggleMobile()">🎮 União Master</button>
+    <button class="nav-btn rogi-btn" onclick="showSection('rogi'); toggleMobile()">⚔ ROGI</button>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION: HOME
+  ══════════════════════════════════════ -->
+  <div id="sec-home" class="section-page active">
+    <div class="hero">
+      <div class="hero-placeholder">🎮</div>
+      <h1>IVISION GAMES</h1>
+      <p>Plataforma central para alianças, sistemas de governança e comunidades de jogos.</p>
+    </div>
+
+    <div class="home-cards">
+      <div class="home-card uniao" onclick="showSection('uniao')">
+        <span class="hc-icon">🏆</span>
+        <div class="hc-title">União Master</div>
+        <p class="hc-desc">Dicas exclusivas, estratégias e material de ouro para membros da União Master no Coin Master.</p>
+        <span class="hc-badge">Coin Master</span>
       </div>
-      
-      <!-- Dica 2 - Placeholder -->
-      <div class="dica-card" style="opacity: 0.7; cursor: not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
-        <span class="dica-icon">💰</span>
-        <h3 class="dica-title">Gestão de Moedas</h3>
-        <p class="dica-description">
-          Aprenda a gerenciar suas moedas de forma eficiente e evite desperdícios desnecessários.
-        </p>
-        <span class="dica-status em-breve">Em Breve</span>
-      </div>
-      
-      <!-- Dica 3 - Placeholder -->
-      <div class="dica-card" style="opacity: 0.7; cursor: not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
-        <span class="dica-icon">🛡️</span>
-        <h3 class="dica-title">Defesa Estratégica</h3>
-        <p class="dica-description">
-          Descubra as melhores estratégias para proteger sua vila de ataques e raids.
-        </p>
-        <span class="dica-status em-breve">Em Breve</span>
-      </div>
-      
-      <!-- Dica 4 - Placeholder -->
-      <div class="dica-card" style="opacity: 0.7; cursor: not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
-        <span class="dica-icon">🎰</span>
-        <h3 class="dica-title">Otimização de Spins</h3>
-        <p class="dica-description">
-          Quando e como usar seus spins para obter o máximo de benefícios no jogo.
-        </p>
-        <span class="dica-status em-breve">Em Breve</span>
-      </div>
-      
-      <!-- Dica 5 - Placeholder -->
-      <div class="dica-card" style="opacity: 0.7; cursor: not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
-        <span class="dica-icon">🃏</span>
-        <h3 class="dica-title">Sistema de Cartas</h3>
-        <p class="dica-description">
-          Guia completo sobre colecionar, trocar e maximizar suas cartas no jogo.
-        </p>
-        <span class="dica-status em-breve">Em Breve</span>
-      </div>
-      
-      <!-- Dica 6 - Placeholder -->
-      <div class="dica-card" style="opacity: 0.7; cursor: not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
-        <span class="dica-icon">👥</span>
-        <h3 class="dica-title">Trabalho em Equipe</h3>
-        <p class="dica-description">
-          Como contribuir melhor para os eventos de equipe e ajudar a União Master a vencer.
-        </p>
-        <span class="dica-status em-breve">Em Breve</span>
+
+      <div class="home-card rogi" onclick="showSection('rogi')">
+        <span class="hc-icon">⚔️</span>
+        <div class="hc-title">ROGI — PGS</div>
+        <p class="hc-desc">Sistema oficial de governança, performance e automação estratégica da aliança ROGI em Last War: Survival.</p>
+        <span class="hc-badge">Last War: Survival</span>
       </div>
     </div>
-  </main>
 
-  <footer>
-    <p><strong>🔰 União Master</strong></p>
-    <p style="margin-top: 0.5rem;">Força, Honra e Lealdade!</p>
-    <p style="margin-top: 1rem; font-size: 0.85rem;">&copy; 2025 IVision Produções • Conteúdo exclusivo</p>
-  </footer>
+    <footer>
+      <p><strong>IVision Games</strong></p>
+      <p style="margin-top:0.4rem;">&copy; 2025 IVision Produções • Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION: UNIÃO MASTER
+  ══════════════════════════════════════ -->
+  <div id="sec-uniao" class="section-page">
+    <div class="section-header">
+      <h1>🎮 IVision Games</h1>
+      <p>União Master — Dicas de Ouro para Coin Master</p>
+    </div>
+
+    <main>
+      <div class="logo-section">
+        <img src="images/logo-uniao-master.png" alt="União Master" class="logo-uniao"
+             onerror="this.outerHTML='<div style=\'width:160px;height:160px;border-radius:50%;border:4px solid #FFC857;background:rgba(255,200,87,0.1);display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto;\'>🏆</div>'">
+      </div>
+
+      <h2 class="section-title">⭐ Dicas de Ouro</h2>
+      <p class="section-subtitle">Material exclusivo para membros da União Master</p>
+
+      <div class="dicas-grid">
+        <div class="dica-card" onclick="window.location.href='dicas/navegador.html?dica=drop-martelos.html'">
+          <span class="dica-icon">🎯</span>
+          <h3 class="dica-title">Drop de Martelos</h3>
+          <p class="dica-description">Entenda como funciona o sistema de drop dos martelos e maximize seus giros durante os eventos da equipe.</p>
+          <span class="dica-status">Disponível</span>
+        </div>
+
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+          <span class="dica-icon">💰</span>
+          <h3 class="dica-title">Gestão de Moedas</h3>
+          <p class="dica-description">Aprenda a gerenciar suas moedas de forma eficiente e evite desperdícios desnecessários.</p>
+          <span class="dica-status em-breve">Em Breve</span>
+        </div>
+
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+          <span class="dica-icon">🛡️</span>
+          <h3 class="dica-title">Defesa Estratégica</h3>
+          <p class="dica-description">Descubra as melhores estratégias para proteger sua vila de ataques e raids.</p>
+          <span class="dica-status em-breve">Em Breve</span>
+        </div>
+
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+          <span class="dica-icon">🎰</span>
+          <h3 class="dica-title">Otimização de Spins</h3>
+          <p class="dica-description">Quando e como usar seus spins para obter o máximo de benefícios no jogo.</p>
+          <span class="dica-status em-breve">Em Breve</span>
+        </div>
+
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+          <span class="dica-icon">🃏</span>
+          <h3 class="dica-title">Sistema de Cartas</h3>
+          <p class="dica-description">Guia completo sobre colecionar, trocar e maximizar suas cartas no jogo.</p>
+          <span class="dica-status em-breve">Em Breve</span>
+        </div>
+
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+          <span class="dica-icon">👥</span>
+          <h3 class="dica-title">Trabalho em Equipe</h3>
+          <p class="dica-description">Como contribuir melhor para os eventos de equipe e ajudar a União Master a vencer.</p>
+          <span class="dica-status em-breve">Em Breve</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p><strong>🔰 União Master</strong></p>
+      <p style="margin-top:0.4rem;">Força, Honra e Lealdade!</p>
+      <p style="margin-top:0.75rem;">&copy; 2025 IVision Produções • Conteúdo exclusivo</p>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION: ROGI
+  ══════════════════════════════════════ -->
+  <div id="sec-rogi" class="section-page">
+    <div class="rogi-container">
+      <iframe
+        id="rogiFrame"
+        class="rogi-frame"
+        src=""
+        data-src="manifesto/index.html"
+        title="ROGI-PGS — Manifesto Oficial"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+
+  <script>
+    const sections = ['home', 'uniao', 'rogi'];
+    const navBtns  = document.querySelectorAll('.topnav .nav-btn, .mobile-menu .nav-btn');
+
+    function showSection(id) {
+      // pages
+      sections.forEach(s => {
+        document.getElementById('sec-' + s).classList.toggle('active', s === id);
+      });
+
+      // nav highlight
+      navBtns.forEach(btn => {
+        const targets = { home:'home', uniao:'uniao', rogi:'rogi' };
+        const match = btn.textContent.toLowerCase();
+        const isActive =
+          (id === 'home'  && match.includes('início'))  ||
+          (id === 'uniao' && match.includes('união'))   ||
+          (id === 'rogi'  && match.includes('rogi'));
+        btn.classList.toggle('active', isActive);
+      });
+
+      // lazy-load iframe only on first visit
+      if (id === 'rogi') {
+        const frame = document.getElementById('rogiFrame');
+        if (!frame.src || frame.src === window.location.href) {
+          frame.src = frame.dataset.src;
+        }
+        // auto-resize
+        frame.onload = () => {
+          try {
+            const h = frame.contentWindow.document.body.scrollHeight;
+            if (h > 0) frame.style.height = h + 'px';
+          } catch(e) {
+            frame.style.height = '100vh';
+          }
+        };
+      }
+
+      // scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // update URL hash silently
+      history.replaceState(null, '', '#' + id);
+    }
+
+    function toggleMobile() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // restore section from URL hash on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = location.hash.replace('#', '');
+      if (sections.includes(hash)) showSection(hash);
+    });
+  </script>
 </body>
 </html>
