@@ -723,92 +723,6 @@ span[data-lang]{display:none;}
   .lang-btn{padding:5px 10px;font-size:9px;}
   .doc-#rogi-manifesto {padding:0 16px 80px;}
 }
-  
-/* ══ ROGI DATA SUB-MENU ══ */
-.rogi-data-bar {
-  position: sticky; top: 60px; z-index: 900;
-  background: rgba(10,10,10,0.97);
-  border-bottom: 1px solid rgba(192,57,43,0.25);
-  display: flex; align-items: center; gap: 4px;
-  padding: 10px 20px; overflow-x: auto;
-  scrollbar-width: none;
-}
-.rogi-data-bar::-webkit-scrollbar { display: none; }
-
-.rogi-tab-btn {
-  font-family: 'Orbitron', monospace; font-size: 9px; font-weight: 700;
-  letter-spacing: 2px; padding: 7px 16px; white-space: nowrap;
-  border: 1px solid rgba(192,57,43,0.3); border-radius: 0;
-  background: transparent; color: #6B7580; cursor: pointer;
-  transition: all 0.2s; text-transform: uppercase;
-}
-.rogi-tab-btn:hover { color: #C8CDD0; border-color: rgba(192,57,43,0.6); background: rgba(139,0,0,0.1); }
-.rogi-tab-btn.active { color: #E6B020; border-color: #C0392B; background: rgba(139,0,0,0.2); }
-
-.rogi-tab-panel { display: none; padding: 28px 24px; min-height: 60vh; }
-.rogi-tab-panel.active { display: block; }
-
-/* ── SLIDES PANEL ── */
-.slides-wrapper {
-  background: #0d0d0d;
-  border: 1px solid rgba(192,57,43,0.2);
-  border-radius: 4px; overflow: hidden;
-  position: relative; max-width: 960px; margin: 0 auto;
-}
-.slides-wrapper iframe {
-  width: 100%; aspect-ratio: 16/9; border: none; display: block;
-}
-
-/* ── TABLE PANEL ── */
-.sheet-status {
-  font-family: 'Share Tech Mono', monospace; font-size: 11px;
-  letter-spacing: 2px; color: #6B7580; text-align: center;
-  padding: 40px 20px;
-}
-.sheet-status.error { color: #E74C3C; }
-
-.rogi-table-wrap { overflow-x: auto; }
-.rogi-table {
-  width: 100%; border-collapse: collapse;
-  font-family: 'Rajdhani', sans-serif; font-size: 14px;
-  min-width: 500px;
-}
-.rogi-table thead tr { background: #1c1c1c; }
-.rogi-table th {
-  padding: 10px 14px; text-align: left;
-  font-family: 'Share Tech Mono', monospace; font-size: 9px;
-  letter-spacing: 2.5px; color: #E6B020; font-weight: 400;
-  border-bottom: 1px solid rgba(212,160,23,0.3);
-  white-space: nowrap;
-}
-.rogi-table td {
-  padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: #C4C9CC; vertical-align: middle;
-}
-.rogi-table tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-.rogi-table tbody tr:hover td { background: rgba(212,160,23,0.05); }
-.rogi-table td:first-child { color: #EAEAEA; font-weight: 600; }
-
-/* rank badge */
-.rk { display:inline-block; font-family:'Orbitron',monospace; font-size:9px;
-       font-weight:700; letter-spacing:1px; padding:2px 7px; border:1px solid; }
-.rk-1 { color:#E6B020; border-color:rgba(230,176,32,0.5); background:rgba(230,176,32,0.08); }
-.rk-2 { color:#C4C9CC; border-color:rgba(196,201,204,0.4); background:rgba(196,201,204,0.06); }
-.rk-3 { color:#CD7F32; border-color:rgba(205,127,50,0.4); background:rgba(205,127,50,0.06); }
-.rk-n { color:#6B7580; border-color:rgba(107,117,128,0.3); background:transparent; }
-
-.sheet-panel-header {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-  padding-bottom: 12px; border-bottom: 1px solid rgba(212,160,23,0.15);
-}
-.sph-num {
-  font-family:'Orbitron',monospace; font-size:28px; font-weight:900;
-  color: rgba(139,0,0,0.4); line-height:1;
-}
-.sph-tag { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:3px; color:#E6B020; display:block; margin-bottom:3px; }
-.sph-title { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:#EAEAEA; }
-.sph-count { margin-left:auto; font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; color:#6B7580; }
-
   </style>
 </head>
 <body>
@@ -820,7 +734,6 @@ span[data-lang]{display:none;}
       <button class="nav-btn" onclick="window.location.href='/index.html'">🏠 Início</button>
       <button class="nav-btn"           onclick="showSection('uniao')">🎮 União Master</button>
       <button class="nav-btn rogi-btn"  onclick="showSection('rogi')">⚔ ROGI</button>
-      <button class="nav-btn rogi-btn"  onclick="showSection('rogi-data')">📊 ROGI DATA</button>
     </div>
     <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -830,7 +743,6 @@ span[data-lang]{display:none;}
     <button class="nav-btn" onclick="window.location.href='/index.html'">🏠 Início</button>
     <button class="nav-btn" onclick="showSection('uniao');toggleMobile()">🎮 União Master</button>
     <button class="nav-btn rogi-btn" onclick="showSection('rogi');toggleMobile()">⚔ ROGI</button>
-    <button class="nav-btn rogi-btn" onclick="showSection('rogi-data');toggleMobile()">📊 ROGI DATA</button>
   </div>
 
   <!-- ══ HOME ══ -->
@@ -1547,7 +1459,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- ══ INDEX SCRIPT ══ -->
   <script>
-    const SECTIONS = ['home','uniao','rogi','rogi-data'];
+    const SECTIONS = ['home','uniao','rogi'];
 
     function showSection(id) {
       SECTIONS.forEach(s => {
@@ -1558,8 +1470,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const active =
           (id==='home'  && t.includes('início'))  ||
           (id==='uniao' && t.includes('união'))   ||
-          (id==='rogi'  && t.includes('rogi') && !t.includes('data')) ||
-          (id==='rogi-data' && t.includes('data'));
+          (id==='rogi'  && t.includes('rogi'));
         btn.classList.toggle('active', active);
         if(btn.classList.contains('rogi-btn') && active) {
           btn.classList.add('active');
@@ -1567,7 +1478,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       window.scrollTo({top:0,behavior:'smooth'});
       history.replaceState(null,'','#'+id);
-      if(id==='rogi-data') rogiDataInit();
       if(id==='rogi') observeSections();
     }
 
@@ -1660,174 +1570,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   </script>
 
-
-<div id="sec-rogi-data" class="section-page">
-  <!-- Sub-menu tabs -->
-  <div class="rogi-data-bar">
-    <button class="rogi-tab-btn active" onclick="rogiTabSwitch('trem')">🚂 CTRL TREM</button>
-    <button class="rogi-tab-btn"        onclick="rogiTabSwitch('main')">⚔ MAIN</button>
-    <button class="rogi-tab-btn"        onclick="rogiTabSwitch('score')">📊 SCORE SEMANAL</button>
-    <button class="rogi-tab-btn"        onclick="rogiTabSwitch('escala')">📅 ESCALA SEMANAL</button>
-  </div>
-
-  <!-- TREM -->
-  <div id="rogi-tab-trem" class="rogi-tab-panel active">
-    <div class="sheet-panel-header">
-      <div class="sph-num">01</div>
-      <div>
-        <span class="sph-tag">// OPERAÇÃO FERROVIÁRIA</span>
-        <div class="sph-title">Controle do <span style="color:#E74C3C">Trem</span></div>
-      </div>
-      <span class="sph-count" id="count-trem">— registros</span>
-    </div>
-    <div id="sheet-trem" class="sheet-status">
-      <span>⏳ CARREGANDO DADOS...</span>
-    </div>
-  </div>
-
-  <!-- MAIN -->
-  <div id="rogi-tab-main" class="rogi-tab-panel">
-    <div class="sheet-panel-header">
-      <div class="sph-num">02</div>
-      <div>
-        <span class="sph-tag">// PAINEL GERAL</span>
-        <div class="sph-title">Dados <span style="color:#E74C3C">MAIN</span></div>
-      </div>
-      <span class="sph-count" id="count-main">— registros</span>
-    </div>
-    <div id="sheet-main" class="sheet-status">
-      <span>⏳ CARREGANDO DADOS...</span>
-    </div>
-  </div>
-
-  <!-- SCORE SEMANAL -->
-  <div id="rogi-tab-score" class="rogi-tab-panel">
-    <div class="sheet-panel-header">
-      <div class="sph-num">03</div>
-      <div>
-        <span class="sph-tag">// RANKING DE PERFORMANCE</span>
-        <div class="sph-title">Score <span style="color:#E74C3C">Semanal</span></div>
-      </div>
-      <span class="sph-count" id="count-score">— registros</span>
-    </div>
-    <div id="sheet-score" class="sheet-status">
-      <span>⏳ CARREGANDO DADOS...</span>
-    </div>
-  </div>
-
-  <!-- ESCALA SEMANAL (Slides) -->
-  <div id="rogi-tab-escala" class="rogi-tab-panel">
-    <div class="sheet-panel-header">
-      <div class="sph-num">04</div>
-      <div>
-        <span class="sph-tag">// ORGANIZAÇÃO OPERACIONAL</span>
-        <div class="sph-title">Escala <span style="color:#E74C3C">Semanal</span></div>
-      </div>
-    </div>
-    <div class="slides-wrapper">
-      <iframe
-        src="https://docs.google.com/presentation/d/1_aUMsgpZpsN1gclqOulWQeJXoDmMLIvOSBRaJsQOZrk/embed?start=false&loop=false&delayms=0&rm=minimal"
-        allowfullscreen
-        title="Escala Semanal ROGI">
-      </iframe>
-    </div>
-    <p style="text-align:center;margin-top:12px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:#6B7580;">
-      USE AS SETAS DO SLIDE PARA NAVEGAR · ATUALIZADO PELA LIDERANÇA
-    </p>
-  </div>
-</div>
-
-<script>
-
-// ── ROGI DATA ──────────────────────────────────────────
-const ROGI_SHEET_ID = "1ren1ZkeWJspUdodvpFuewP_2b_6UdsaaUvesRnTJh-M";
-
-const ROGI_SHEETS = {
-  trem:  { name: "CTRL_CICLO_TREM", target: "sheet-trem",  count: "count-trem"  },
-  main:  { name: "MAIN",            target: "sheet-main",  count: "count-main"  },
-  score: { name: "SCORE_SEMANAL",   target: "sheet-score", count: "count-score" },
-};
-
-const rogiLoaded = {};
-
-function rogiTabSwitch(tab) {
-  document.querySelectorAll('.rogi-tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.rogi-tab-panel').forEach(p => p.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  document.getElementById('rogi-tab-' + tab).classList.add('active');
-  if (ROGI_SHEETS[tab] && !rogiLoaded[tab]) rogiLoadSheet(tab);
-}
-
-function rogiLoadSheet(key) {
-  const cfg = ROGI_SHEETS[key];
-  const el  = document.getElementById(cfg.target);
-  const url = `https://docs.google.com/spreadsheets/d/${ROGI_SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(cfg.name)}`;
-
-  el.innerHTML = '<span>⏳ CARREGANDO DADOS...</span>';
-
-  const script = document.createElement('script');
-  script.src = url + '&callback=rogiGvizCb_' + key;
-
-  window['rogiGvizCb_' + key] = function(data) {
-    rogiLoaded[key] = true;
-    try {
-      const table = data.table;
-      const cols  = table.cols.filter(c => c.label && c.label.trim() !== '');
-      const rows  = table.rows;
-
-      if (!rows || rows.length === 0) {
-        el.innerHTML = '<span class="error">⚠ NENHUM DADO ENCONTRADO NA ABA</span>';
-        return;
-      }
-
-      const validRows = rows.filter(r => r.c && r.c.some(c => c && c.v !== null && c.v !== ''));
-      document.getElementById(cfg.count).textContent = validRows.length + ' registros';
-
-      let html = '<div class="rogi-table-wrap"><table class="rogi-table"><thead><tr>';
-      cols.forEach(c => { html += `<th>${c.label}</th>`; });
-      html += '</tr></thead><tbody>';
-
-      validRows.forEach((row, ri) => {
-        html += '<tr>';
-        cols.forEach((col, ci) => {
-          const cell = row.c && row.c[ci];
-          let val = cell ? (cell.f || cell.v) : '';
-          if (val === null || val === undefined) val = '';
-
-          // Rank badge on first col if numeric position
-          if (ci === 0 && !isNaN(val) && val !== '') {
-            const n = parseInt(val);
-            const cls = n === 1 ? 'rk-1' : n === 2 ? 'rk-2' : n === 3 ? 'rk-3' : 'rk-n';
-            val = `<span class="rk ${cls}">${val}</span>`;
-          }
-
-          html += `<td>${val}</td>`;
-        });
-        html += '</tr>';
-      });
-
-      html += '</tbody></table></div>';
-      el.className = 'rogi-table-wrap';
-      el.innerHTML = html;
-    } catch(e) {
-      el.innerHTML = '<span class="error">⚠ ERRO AO PROCESSAR DADOS: ' + e.message + '</span>';
-    }
-    script.remove();
-  };
-
-  script.onerror = function() {
-    el.innerHTML = '<span class="error">⚠ FALHA AO ACESSAR A PLANILHA<br><small style="font-size:10px;letter-spacing:1px;">Verifique se está pública (Compartilhar → Qualquer pessoa)</small></span>';
-    script.remove();
-  };
-
-  document.head.appendChild(script);
-}
-
-function rogiDataInit() {
-  // Load first tab (trem) immediately on section open
-  if (!rogiLoaded['trem']) rogiLoadSheet('trem');
-}
-
-</script>
 </body>
 </html>
