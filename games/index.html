@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IVision Games</title>
-  <link rel="icon" type="imagem/png" href="favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ══ INDEX BASE STYLES ══ */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
     body {
       background: linear-gradient(135deg, #0c151f 0%, #1a1a2e 50%, #16213e 100%);
       color: #fff;
@@ -16,449 +16,742 @@
       min-height: 100vh;
     }
 
-    /* ══════════════════════════════
-       TOP NAV
-    ══════════════════════════════ */
+    /* TOP NAV */
     .topnav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 14, 22, 0.96);
+      position: sticky; top: 0; z-index: 2000;
+      background: rgba(10, 14, 22, 0.97);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255, 200, 87, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
     }
-
     .nav-brand {
-      font-family: 'Orbitron', monospace;
-      font-size: 1rem;
-      font-weight: 900;
-      color: #FFC857;
-      letter-spacing: 3px;
-      text-decoration: none;
-      cursor: pointer;
-      white-space: nowrap;
+      font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 900;
+      color: #FFC857; letter-spacing: 3px; cursor: pointer; white-space: nowrap;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-
+    .nav-links { display: flex; gap: 4px; align-items: center; }
     .nav-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 2rem;
-      border: 1px solid transparent;
-      background: transparent;
-      color: #aaa;
-      cursor: pointer;
-      transition: all 0.25s;
-      text-decoration: none;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 2rem; border: 1px solid transparent;
+      background: transparent; color: #aaa; cursor: pointer; transition: all 0.25s;
       white-space: nowrap;
-      letter-spacing: 0.3px;
     }
-
-    .nav-btn:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.12);
-    }
-
-    .nav-btn.active {
-      color: #0c151f;
-      background: #FFC857;
-      border-color: #FFC857;
-      font-weight: 700;
-    }
-
+    .nav-btn:hover { color: #fff; background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.12); }
+    .nav-btn.active { color: #0c151f; background: #FFC857; border-color: #FFC857; font-weight: 700; }
     .nav-btn.rogi-btn {
-      color: #E74C3C;
-      border-color: rgba(231, 76, 60, 0.3);
-      font-family: 'Orbitron', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
+      color: #E74C3C; border-color: rgba(231,76,60,0.3);
+      font-family: 'Orbitron', monospace; font-size: 0.72rem; letter-spacing: 2px;
     }
+    .nav-btn.rogi-btn:hover { background: rgba(231,76,60,0.12); border-color: rgba(231,76,60,0.6); color: #ff6b5b; }
+    .nav-btn.rogi-btn.active { background: #8B0000; border-color: #C0392B; color: #E6B020; }
 
-    .nav-btn.rogi-btn:hover {
-      background: rgba(231, 76, 60, 0.12);
-      border-color: rgba(231, 76, 60, 0.6);
-      color: #ff6b5b;
-    }
-
-    .nav-btn.rogi-btn.active {
-      background: #8B0000;
-      border-color: #C0392B;
-      color: #E6B020;
-    }
-
-    /* hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 6px;
-      background: none;
-      border: none;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: #FFC857;
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #FFC857; border-radius: 2px; transition: all 0.3s; }
     .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: rgba(10, 14, 22, 0.98);
-      border-bottom: 1px solid rgba(255, 200, 87, 0.15);
-      padding: 1rem 1.5rem;
-      gap: 6px;
+      display: none; flex-direction: column;
+      background: rgba(10,14,22,0.98);
+      border-bottom: 1px solid rgba(255,200,87,0.15);
+      padding: 1rem 1.5rem; gap: 6px; position: relative; z-index: 1999;
     }
-
-    .mobile-menu .nav-btn {
-      width: 100%;
-      text-align: left;
-      padding: 10px 16px;
-      border-radius: 0.75rem;
-    }
-
+    .mobile-menu .nav-btn { width:100%; text-align:left; padding:10px 16px; border-radius:0.75rem; }
     .mobile-menu.open { display: flex; }
 
-    /* ══════════════════════════════
-       SECTIONS
-    ══════════════════════════════ */
+    /* SECTIONS */
     .section-page { display: none; }
     .section-page.active { display: block; }
 
-    /* ══════════════════════════════
-       HOME SECTION
-    ══════════════════════════════ */
-    .hero {
-      padding: 5rem 2rem 3rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .hero-logo {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 2rem;
-      border-radius: 50%;
-      border: 4px solid #FFC857;
-      box-shadow: 0 0 40px rgba(255, 200, 87, 0.25);
-      object-fit: cover;
-      display: block;
-    }
-
+    /* HOME */
+    .hero { padding: 5rem 2rem 3rem; text-align: center; max-width: 900px; margin: 0 auto; }
     .hero-placeholder {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 2rem;
-      border-radius: 50%;
-      border: 4px solid #FFC857;
-      background: rgba(255, 200, 87, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
+      width: 110px; height: 110px; margin: 0 auto 2rem; border-radius: 50%;
+      border: 4px solid #FFC857; background: rgba(255,200,87,0.1);
+      display: flex; align-items: center; justify-content: center; font-size: 3rem;
     }
-
     .hero h1 {
-      font-family: 'Orbitron', monospace;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 900;
-      color: #FFC857;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      font-family: 'Orbitron', monospace; font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900; color: #FFC857; letter-spacing: 2px;
     }
-
-    .hero p {
-      margin-top: 1rem;
-      color: #aaa;
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
+    .hero p { margin-top: 1rem; color: #aaa; font-size: 1.05rem; max-width: 580px; margin-left: auto; margin-right: auto; }
     .home-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 2rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 3rem auto; padding: 0 2rem;
     }
-
     .home-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1.25rem;
-      padding: 2rem 1.75rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.25rem; padding: 2rem 1.75rem; cursor: pointer; transition: all 0.3s;
+      position: relative; overflow: hidden;
     }
-
-    .home-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-    }
-
-    .home-card.uniao::before { background: linear-gradient(90deg, #FFC857, #FFD700, #FFA500); }
-    .home-card.rogi::before  { background: linear-gradient(90deg, #8B0000, #C0392B, #E74C3C); }
-
-    .home-card:hover {
-      transform: translateY(-8px);
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255, 200, 87, 0.3);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    }
-
-    .home-card.rogi:hover {
-      border-color: rgba(231, 76, 60, 0.35);
-      box-shadow: 0 16px 40px rgba(139,0,0,0.3);
-    }
-
-    .hc-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
-    .hc-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: #FFC857; }
-    .home-card.rogi .hc-title { color: #E74C3C; }
-    .hc-desc { font-size: 0.9rem; color: #aaa; line-height: 1.6; }
-
+    .home-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; }
+    .home-card.uniao::before { background: linear-gradient(90deg,#FFC857,#FFD700,#FFA500); }
+    .home-card.rogi::before  { background: linear-gradient(90deg,#8B0000,#C0392B,#E74C3C); }
+    .home-card:hover { transform:translateY(-8px); background:rgba(255,255,255,0.07); border-color:rgba(255,200,87,0.3); box-shadow:0 16px 40px rgba(0,0,0,0.4); }
+    .home-card.rogi:hover { border-color:rgba(231,76,60,0.35); box-shadow:0 16px 40px rgba(139,0,0,0.3); }
+    .hc-icon { font-size:2.8rem; margin-bottom:1rem; display:block; }
+    .hc-title { font-size:1.4rem; font-weight:700; margin-bottom:0.5rem; color:#FFC857; }
+    .home-card.rogi .hc-title { color:#E74C3C; }
+    .hc-desc { font-size:0.9rem; color:#aaa; line-height:1.6; }
     .hc-badge {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 4px 12px;
-      border-radius: 1rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      background: rgba(255,200,87,0.12);
-      color: #FFC857;
-      border: 1px solid rgba(255,200,87,0.25);
+      display:inline-block; margin-top:1rem; padding:4px 12px; border-radius:1rem;
+      font-size:0.78rem; font-weight:600; background:rgba(255,200,87,0.12);
+      color:#FFC857; border:1px solid rgba(255,200,87,0.25);
     }
+    .home-card.rogi .hc-badge { background:rgba(139,0,0,0.2); color:#E74C3C; border-color:rgba(192,57,43,0.35); }
 
-    .home-card.rogi .hc-badge {
-      background: rgba(139,0,0,0.2);
-      color: #E74C3C;
-      border-color: rgba(192,57,43,0.35);
-    }
-
-    /* ══════════════════════════════
-       UNIÃO MASTER SECTION
-    ══════════════════════════════ */
+    /* UNIÃO MASTER */
     .section-header {
-      background: rgba(12, 21, 31, 0.85);
-      padding: 2.5rem 1.5rem 2rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(255,200,87,0.1);
+      background: rgba(12,21,31,0.85); padding: 2.5rem 1.5rem 2rem;
+      text-align: center; border-bottom: 1px solid rgba(255,200,87,0.1);
     }
-
-    .section-header h1 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      color: #FFC857;
-      font-weight: 800;
-    }
-
-    .section-header p {
-      margin-top: 0.5rem;
-      color: #aaa;
-      font-size: 1rem;
-    }
-
-    main {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-size: 1.9rem;
-      color: #FFC857;
-      margin-bottom: 0.75rem;
-      text-align: center;
-      font-weight: 800;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #aaa;
-      margin-bottom: 3rem;
-      font-size: 1rem;
-    }
-
-    .logo-section {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .logo-uniao {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto;
-      border-radius: 50%;
-      border: 4px solid #FFC857;
-      box-shadow: 0 8px 32px rgba(255, 200, 87, 0.3);
-      object-fit: cover;
-    }
-
-    .dicas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1.5rem;
-    }
-
+    .section-header h1 { font-size: clamp(1.6rem,4vw,2.4rem); color:#FFC857; font-weight:800; }
+    .section-header p { margin-top:0.5rem; color:#aaa; font-size:1rem; }
+    main { padding: 3rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-title { font-size:1.9rem; color:#FFC857; margin-bottom:0.75rem; text-align:center; font-weight:800; }
+    .section-subtitle { text-align:center; color:#aaa; margin-bottom:3rem; font-size:1rem; }
+    .logo-section { text-align:center; margin-bottom:2.5rem; }
+    .logo-uniao { width:160px; height:160px; margin:0 auto; border-radius:50%; border:4px solid #FFC857; box-shadow:0 8px 32px rgba(255,200,87,0.3); object-fit:cover; display:block; }
+    .dicas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.75rem; margin-top:1.5rem; }
     .dica-card {
-      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
-      padding: 1.75rem;
-      border-radius: 1.25rem;
-      border: 1.5px solid #333;
-      transition: all 0.3s;
-      cursor: pointer;
+      background:linear-gradient(135deg,#1e1e1e 0%,#2a2a2a 100%);
+      padding:1.75rem; border-radius:1.25rem; border:1.5px solid #333;
+      transition:all 0.3s; cursor:pointer; position:relative; overflow:hidden;
+    }
+    .dica-card::before { content:''; position:absolute; top:0;left:0; width:100%; height:4px; background:linear-gradient(90deg,#FFC857,#FFD700,#FFA500); }
+    .dica-card:hover { transform:translateY(-8px); border-color:#FFC857; box-shadow:0 12px 32px rgba(255,200,87,0.25); }
+    .dica-icon { font-size:2.5rem; margin-bottom:0.75rem; display:block; }
+    .dica-title { font-size:1.3rem; color:#FFC857; margin-bottom:0.5rem; font-weight:700; }
+    .dica-description { color:#ccc; margin-bottom:1rem; line-height:1.6; font-size:0.92rem; }
+    .dica-status { display:inline-block; padding:3px 10px; background:#27ae60; color:white; border-radius:1rem; font-size:0.8rem; font-weight:600; }
+    .dica-status.em-breve { background:#555; color:#aaa; }
+
+    /* FOOTER */
+    footer { padding:2rem; text-align:center; font-size:0.85rem; color:#aaa; background:rgba(12,21,31,0.5); border-top:1px solid rgba(255,255,255,0.05); }
+    footer strong { color:#FFC857; }
+
+    /* RESPONSIVE */
+    @media (max-width:768px) {
+      .topnav { padding:0 1rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .home-cards { grid-template-columns:1fr; }
+      .dicas-grid { grid-template-columns:1fr; }
+      .hero { padding:3rem 1.5rem 2rem; }
+    }
+    @media (min-width:769px) { .mobile-menu { display:none !important; } }
+
+    /* ══ ROGI SECTION WRAPPER ══ */
+    #sec-rogi { background: #0d0d0d; }
+    #rogi-manifesto {
       position: relative;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .dica-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #FFC857, #FFD700, #FFA500);
-    }
+    /* ══ ROGI SCOPED STYLES ══ */
+:root {
+  --blood:#8B0000; --red:#C0392B; --ember:#E74C3C;
+  --gold:#C9960F;  --gold2:#E6B020;
+  --coal:#0d0d0d;  --smoke:#141414; --ash:#1c1c1c; --fog:#252525;
+  --silver:#C4C9CC; --ghost:#EAEAEA; --dim:#6B7580;
+  --green:#1E8449; --blue:#1A5276;
+  --pt:#009C3B; --en:#B22234; --es:#AA151B;
+  --page-w:210mm;
+}
 
-    .dica-card:hover {
-      transform: translateY(-8px);
-      border-color: #FFC857;
-      box-shadow: 0 12px 32px rgba(255, 200, 87, 0.25);
-    }
+*{margin:0;padding:0;box-sizing:border-box;}
+/* skipped html rule */
 
-    .dica-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+/* ── SCANLINES ── */
+#rogi-manifesto::before{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 4px);
+  pointer-events:none;z-index:9999;
+}
 
-    .dica-title {
-      font-size: 1.3rem;
-      color: #FFC857;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
+#rogi-manifesto {
+  background:var(--coal);color:var(--ghost);
+  font-family:'Rajdhani',sans-serif;
+  overflow-x:hidden;min-height:100vh;
+}
 
-    .dica-description {
-      color: #ccc;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      font-size: 0.92rem;
-    }
+/* ════════════════════════════════════
+   LANGUAGE SWITCHER
+════════════════════════════════════ */
+.lang-bar{
+  position:sticky;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;height:52px;
+  background:rgba(13,13,13,0.95);
+  border-bottom:1px solid rgba(212,160,23,0.15);
+  backdrop-filter:blur(12px);
+}
 
-    .dica-status {
-      display: inline-block;
-      padding: 3px 10px;
-      background: #27ae60;
-      color: white;
-      border-radius: 1rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
+.lb-brand{
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
+  letter-spacing:4px;color:rgba(212,160,23,0.5);
+}
 
-    .dica-status.em-breve { background: #555; color: #aaa; }
+.lb-langs{display:flex;gap:4px;align-items:center;}
 
-    /* ══════════════════════════════
-       ROGI SECTION (iframe embed)
-    ══════════════════════════════ */
-    .rogi-container {
-      width: 100%;
-      min-height: calc(100vh - 60px);
-      position: relative;
-    }
+.lang-btn{
+  font-family:'Share Tech Mono',monospace;font-size:10px;
+  letter-spacing:3px;padding:6px 14px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:transparent;color:var(--dim);
+  cursor:pointer;transition:all .25s;
+  position:relative;overflow:hidden;
+  text-transform:uppercase;
+}
+.lang-btn::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  transform:scaleX(0);transition:transform .25s;
+}
+.lang-btn.pt::before{background:var(--pt);}
+.lang-btn.en::before{background:var(--en);}
+.lang-btn.es::before{background:var(--es);}
 
-    .rogi-frame {
-      width: 100%;
-      border: none;
-      display: block;
-      min-height: calc(100vh - 60px);
-    }
+.lang-btn:hover{color:var(--silver);border-color:rgba(255,255,255,0.25);}
+.lang-btn.active{color:var(--ghost);border-color:rgba(212,160,23,0.4);background:rgba(212,160,23,0.06);}
+.lang-btn.active::before{transform:scaleX(1);}
 
-    /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #aaa;
-      background: rgba(12, 21, 31, 0.5);
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+.lang-btn.active.pt{color:#3CB371;}
+.lang-btn.active.en{color:#E8837A;}
+.lang-btn.active.es{color:#E8B04A;}
 
-    footer strong { color: #FFC857; }
+.lb-status{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--dim);
+  display:flex;align-items:center;gap:8px;
+}
+.lb-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--ember);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
 
-    /* ══════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════ */
-    @media (max-width: 768px) {
-      .topnav { padding: 0 1rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .home-cards { grid-template-columns: 1fr; }
-      .dicas-grid { grid-template-columns: 1fr; }
-      .hero { padding: 3rem 1.5rem 2rem; }
-    }
+/* ════════════════════════════════════
+   LANGUAGE CONTENT VISIBILITY
+════════════════════════════════════ */
+[data-lang]{display:none;}
+#rogi-manifesto.lang-pt [data-lang="pt"]{display:block;}
+#rogi-manifesto.lang-en [data-lang="en"]{display:block;}
+#rogi-manifesto.lang-es [data-lang="es"]{display:block;}
 
-    @media (min-width: 769px) {
-      .mobile-menu { display: none !important; }
-    }
+/* inline spans */
+span[data-lang]{display:none;}
+#rogi-manifesto.lang-pt span[data-lang="pt"]{display:inline;}
+#rogi-manifesto.lang-en span[data-lang="en"]{display:inline;}
+#rogi-manifesto.lang-es span[data-lang="es"]{display:inline;}
+
+/* ════════════════════════════════════
+   TRANSITION OVERLAY
+════════════════════════════════════ */
+.lang-overlay{
+  position:absolute;inset:0;z-index:500;
+  background:var(--coal);
+  opacity:0;pointer-events:none;
+  transition:opacity .2s;
+}
+.lang-overlay.active{opacity:1;pointer-events:all;}
+
+/* ════════════════════════════════════
+   COVER
+════════════════════════════════════ */
+.cover{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:80px 40px 60px;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 80% 55% at 50% 40%,rgba(139,0,0,0.16) 0%,transparent 70%),var(--coal);
+}
+
+.cover::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(139,0,0,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,0,0,0.07) 1px,transparent 1px);
+  background-size:56px 56px;
+  animation:gridPulse 10s ease-in-out infinite;
+}
+@keyframes gridPulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+.corner{position:absolute;width:52px;height:52px;border-color:var(--gold2);border-style:solid;opacity:.45;}
+.corner.tl{top:24px;left:24px;border-width:1.5px 0 0 1.5px;}
+.corner.tr{top:24px;right:24px;border-width:1.5px 1.5px 0 0;}
+.corner.bl{bottom:24px;left:24px;border-width:0 0 1.5px 1.5px;}
+.corner.br{bottom:24px;right:24px;border-width:0 1.5px 1.5px 0;}
+
+.cover-badge{
+  position:absolute;top:30px;right:30px;
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--ember);
+  border:1px solid var(--blood);padding:5px 10px;
+  background:rgba(139,0,0,0.1);text-transform:uppercase;
+  animation:blink 4s step-end infinite;
+}
+@keyframes blink{0%,88%,100%{opacity:1;}93%{opacity:0;}}
+
+.cover-inner{position:relative;z-index:2;text-align:center;max-width:860px;}
+
+.sys-label{
+  font-family:'Share Tech Mono',monospace;font-size:10px;
+  letter-spacing:5px;color:var(--dim);text-transform:uppercase;
+  margin-bottom:28px;
+  animation:fadeUp .8s ease both;
+}
+
+.emblem{width:96px;height:96px;margin:0 auto 24px;animation:emblemIn 1.2s ease both;}
+.emblem svg{width:100%;height:100%;filter:drop-shadow(0 0 18px rgba(212,160,23,.45));}
+@keyframes emblemIn{from{opacity:0;transform:scale(.7) rotate(-12deg);}to{opacity:1;transform:scale(1) rotate(0);}}
+
+.cover-rogi{
+  font-family:'Orbitron',monospace;font-weight:900;
+  font-size:clamp(46px,9vw,90px);letter-spacing:clamp(8px,2vw,18px);
+  color:var(--ghost);line-height:1;
+  text-shadow:0 0 36px rgba(192,57,43,.55),0 0 70px rgba(192,57,43,.25),2px 2px 0 rgba(0,0,0,.9);
+  animation:fadeUp .8s .2s ease both;
+}
+.cover-pgs{
+  font-family:'Orbitron',monospace;font-weight:400;
+  font-size:clamp(10px,2vw,16px);letter-spacing:clamp(6px,1.5vw,12px);
+  color:var(--gold2);margin-top:6px;
+  text-shadow:0 0 18px rgba(212,160,23,.45);
+  animation:fadeUp .8s .35s ease both;
+}
+
+.cover-divider{
+  display:flex;align-items:center;gap:14px;
+  margin:26px auto;max-width:460px;
+  animation:fadeUp .8s .5s ease both;
+}
+.cover-divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);}
+.cover-divider i{width:5px;height:5px;background:var(--gold2);transform:rotate(45deg);flex-shrink:0;}
+
+.cover-subtitle{
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(12px,1.8vw,16px);
+  font-weight:300;letter-spacing:4px;color:var(--silver);
+  text-transform:uppercase;line-height:2;
+  animation:fadeUp .8s .65s ease both;
+  min-height:3.6em;
+}
+
+.cover-tagline{
+  margin:36px auto 0;max-width:680px;
+  font-family:'Rajdhani',sans-serif;font-size:clamp(14px,2vw,18px);
+  font-style:italic;color:var(--ember);line-height:1.7;
+  padding:18px 28px;
+  border-left:.5px solid var(--blood);border-right:.5px solid var(--blood);
+  background:rgba(139,0,0,0.07);
+  animation:fadeUp .8s .8s ease both;
+  min-height:4em;display:flex;align-items:center;justify-content:center;
+}
+.cover-tagline::before,.cover-tagline::after{
+  content:'"';color:var(--gold2);font-size:1.4em;line-height:0;vertical-align:-.2em;
+}
+
+.cover-meta{
+  margin-top:46px;display:flex;gap:36px;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .8s 1s ease both;
+}
+.meta-item{text-align:center;}
+.meta-item .label{
+  font-family:'Share Tech Mono',monospace;font-size:8px;
+  letter-spacing:3px;color:var(--dim);display:block;margin-bottom:4px;
+}
+.meta-item .value{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;
+  font-weight:700;color:var(--gold2);letter-spacing:2px;
+}
+
+.scroll-cta{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:fadeUp .8s 1.4s ease both;z-index:2;
+}
+.scroll-cta span{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:4px;color:var(--dim);}
+.scroll-arrow{
+  width:14px;height:14px;
+  border-right:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);
+  transform:rotate(45deg);
+  animation:arrowBounce 1.6s ease-in-out infinite;
+}
+@keyframes arrowBounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(6px);}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ════════════════════════════════════
+   BODY
+════════════════════════════════════ */
+.doc-#rogi-manifesto {max-width:980px;margin:0 auto;padding:0 28px 100px;}
+
+/* ── MODULE SEP ── */
+.mod-sep{
+  display:flex;align-items:center;gap:14px;
+  margin:64px 0 48px;
+}
+.mod-sep-line{flex:1;height:1px;background:var(--fog);}
+.mod-sep-label{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:rgba(212,160,23,.4);white-space:nowrap;
+}
+
+/* ── CHAPTER HEADER ── */
+.ch{
+  display:flex;align-items:flex-start;gap:18px;
+  margin-bottom:28px;padding-bottom:18px;
+  border-bottom:1px solid rgba(212,160,23,.18);
+}
+.ch-num{
+  font-family:'Orbitron',monospace;font-size:clamp(36px,5vw,54px);
+  font-weight:900;color:var(--blood);opacity:.35;line-height:1;flex-shrink:0;
+}
+.ch-tag{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--gold2);display:block;margin-bottom:4px;
+}
+.ch-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(22px,3.5vw,34px);
+  font-weight:900;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ghost);line-height:1.1;
+}
+.ch-title .accent{color:var(--ember);}
+
+/* ── MISSION BLOCK ── */
+.mission-block{
+  background:linear-gradient(135deg,rgba(139,0,0,.13) 0%,rgba(18,8,8,.95) 100%);
+  border:.5px solid rgba(192,57,43,.3);border-left:3px solid var(--ember);
+  padding:26px 30px;margin-bottom:24px;position:relative;
+}
+.mission-block::before{
+  content:'MISSION';position:absolute;top:-10px;right:14px;
+  font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;
+  background:var(--coal);padding:0 8px;color:var(--blood);opacity:.6;
+}
+.mission-block p{
+  font-family:'Rajdhani',sans-serif;font-size:16px;
+  color:var(--silver);line-height:1.8;
+}
+.mission-block p strong{color:var(--ghost);}
+
+/* ── PILLAR GRID ── */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:20px;}
+@media(max-width:600px){.pillars{grid-template-columns:1fr;}}
+.pillar{
+  background:var(--ash);padding:22px 20px;position:relative;
+  overflow:hidden;border-bottom:3px solid;transition:background .25s;cursor:default;
+}
+.pillar:hover{background:#222;}
+.pillar.p1{border-color:var(--ember);}
+.pillar.p2{border-color:var(--gold2);}
+.pillar.p3{border-color:#27AE60;}
+.pillar-icon{font-size:22px;display:block;margin-bottom:10px;}
+.pillar-name{
+  font-family:'Orbitron',monospace;font-size:10px;font-weight:700;
+  letter-spacing:2px;margin-bottom:8px;
+}
+.pillar.p1 .pillar-name{color:var(--ember);}
+.pillar.p2 .pillar-name{color:var(--gold2);}
+.pillar.p3 .pillar-name{color:#27AE60;}
+.pillar-desc{font-size:12px;color:var(--dim);line-height:1.6;}
+
+/* ── QUOTE GRID ── */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:20px;}
+@media(max-width:600px){.quotes{grid-template-columns:1fr;}}
+.quote-card{
+  background:var(--smoke);padding:20px 22px;
+  border-top:2px solid transparent;transition:all .25s;cursor:default;
+}
+.quote-card:hover{background:var(--ash);border-top-color:var(--gold2);}
+.quote-card::before{
+  content:'❝';font-size:32px;color:var(--blood);
+  opacity:.4;line-height:1;display:block;margin-bottom:6px;
+}
+.quote-card p{
+  font-family:'Barlow Condensed',sans-serif;font-size:14px;
+  font-weight:600;color:var(--silver);line-height:1.6;font-style:italic;
+}
+
+/* ── SCORE TABLE ── */
+.score-table{width:100%;border-collapse:collapse;margin-top:20px;}
+.score-table thead tr{background:var(--ash);}
+.score-table th{
+  padding:11px 14px;text-align:left;
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:2.5px;color:var(--gold2);font-weight:400;
+  border-bottom:1.5px solid rgba(212,160,23,.3);
+}
+.score-table td{
+  padding:11px 14px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+}
+.score-table tbody tr:hover{background:rgba(255,255,255,.015);}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'Orbitron',monospace;font-size:9px;font-weight:700;
+  letter-spacing:2px;padding:3px 8px;border:.5px solid;
+}
+.b-elite{color:#E6B020;border-color:rgba(230,176,32,.5);background:rgba(230,176,32,.07);}
+.b-top{color:#E67E22;border-color:rgba(230,126,34,.5);background:rgba(230,126,34,.07);}
+.b-ativo{color:#27AE60;border-color:rgba(39,174,96,.5);background:rgba(39,174,96,.07);}
+.b-apoio{color:#2980B9;border-color:rgba(41,128,185,.5);background:rgba(41,128,185,.07);}
+.b-risco{color:#E74C3C;border-color:rgba(231,76,60,.5);background:rgba(231,76,60,.07);}
+.b-inat{color:#6B7580;border-color:rgba(107,117,128,.4);background:rgba(107,117,128,.06);}
+.score-range{color:var(--dim);}
+.score-status{color:var(--dim);font-family:'Rajdhani',sans-serif;font-size:13px;}
+
+/* ── ALERT ── */
+.alert{
+  background:rgba(139,0,0,.1);
+  border:.5px solid rgba(192,57,43,.3);border-left:3px solid var(--ember);
+  padding:12px 16px;margin-bottom:18px;
+  display:flex;align-items:flex-start;gap:12px;
+}
+.alert-icon{font-size:15px;flex-shrink:0;line-height:1.6;}
+.alert-text{
+  font-family:'Barlow Condensed',sans-serif;font-size:13px;
+  font-weight:600;color:var(--silver);line-height:1.55;flex:1;
+}
+.alert-tag{
+  font-family:'Share Tech Mono',monospace;font-size:8px;
+  letter-spacing:2px;color:var(--ember);flex-shrink:0;align-self:center;
+}
+
+/* ── INDICATOR CARDS ── */
+.ind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:20px;}
+@media(max-width:600px){.ind-grid{grid-template-columns:1fr;}}
+.ind-card{background:var(--smoke);padding:20px;transition:background .25s;}
+.ind-card:hover{background:var(--ash);}
+.ind-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.ind-icon{font-size:18px;}
+.ind-name{
+  font-family:'Orbitron',monospace;font-size:10px;font-weight:700;
+  letter-spacing:2px;color:var(--ember);
+}
+.ind-list{list-style:none;}
+.ind-list li{
+  font-size:12px;color:var(--dim);padding-left:12px;
+  position:relative;line-height:1.6;margin-bottom:3px;
+}
+.ind-list li::before{
+  content:'▸';position:absolute;left:0;
+  color:var(--blood);font-size:9px;top:2px;
+}
+
+/* ── PENALTY TABLE ── */
+.pen-table{width:100%;border-collapse:collapse;margin-top:20px;}
+.pen-table th{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:2.5px;color:var(--gold2);padding:10px 14px;
+  text-align:left;background:var(--ash);
+  border-bottom:.5px solid rgba(212,160,23,.2);
+}
+.pen-table td{
+  padding:11px 14px;font-family:'Rajdhani',sans-serif;font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.pen-table tbody tr:nth-child(even) td{background:rgba(255,255,255,.015);}
+.p-inf{color:var(--silver);font-weight:600;}
+.p-high{color:var(--ember);font-weight:700;}
+.p-med{color:#E67E22;font-weight:700;}
+.p-prog{color:var(--gold2);font-weight:700;}
+.p-sev{color:var(--dim);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;}
+
+/* ── ANTI-CHEAT ── */
+.anti-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:20px;}
+@media(max-width:600px){.anti-grid{grid-template-columns:1fr;}}
+.anti-card{
+  background:rgba(139,0,0,.07);
+  border:.5px solid rgba(192,57,43,.2);
+  padding:20px;transition:background .25s;
+}
+.anti-card:hover{background:rgba(139,0,0,.13);}
+.ac-icon{font-size:18px;display:block;margin-bottom:8px;}
+.ac-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:13px;
+  font-weight:700;letter-spacing:1.5px;color:var(--ember);
+  text-transform:uppercase;margin-bottom:6px;
+}
+.ac-desc{font-size:12px;color:var(--dim);line-height:1.55;}
+
+/* ── TOOLS ── */
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:20px;}
+@media(max-width:600px){.tools-grid{grid-template-columns:repeat(2,1fr);}}
+.tool-card{background:var(--smoke);padding:16px;text-align:center;transition:background .25s;}
+.tool-card:hover{background:var(--ash);}
+.tool-icon{font-size:22px;display:block;margin-bottom:8px;}
+.tool-name{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gold2);}
+.tool-name.dim{color:var(--dim);}
+
+/* ── BENEFITS ── */
+.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:20px;}
+@media(max-width:600px){.benefits{grid-template-columns:1fr;}}
+.ben-col{background:var(--smoke);padding:22px 24px;}
+.ben-label{
+  font-family:'Orbitron',monospace;font-size:9px;font-weight:700;
+  letter-spacing:2.5px;color:var(--gold2);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;padding-bottom:8px;
+  border-bottom:.5px solid rgba(212,160,23,.2);
+}
+.ben-label::after{content:'';flex:1;height:.5px;background:rgba(212,160,23,.1);}
+.ben-list{list-style:none;}
+.ben-list li{
+  font-size:13px;color:var(--silver);
+  display:flex;align-items:flex-start;gap:9px;
+  line-height:1.55;margin-bottom:8px;
+}
+.ben-list li::before{
+  content:'';width:5px;height:5px;background:var(--ember);
+  transform:rotate(45deg);flex-shrink:0;margin-top:5px;
+}
+
+/* ── DIRECTIVE ── */
+.directive{
+  background:var(--smoke);border:.5px solid rgba(212,160,23,.15);
+  padding:20px 24px;margin-top:20px;position:relative;
+}
+.directive::before{
+  content:'// DIRECTIVE';position:absolute;top:-10px;left:16px;
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:2px;background:var(--coal);padding:0 8px;color:var(--gold2);
+}
+.dir-row{
+  display:flex;align-items:center;gap:16px;
+  padding:11px 0;border-bottom:.5px solid rgba(255,255,255,.05);
+}
+.dir-row:last-child{border-bottom:none;}
+.dir-q{
+  font-family:'Barlow Condensed',sans-serif;font-size:15px;
+  font-weight:600;color:var(--silver);flex:1;
+}
+.dir-a{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:1.5px;padding:4px 9px;border:.5px solid;flex-shrink:0;
+}
+.da-yes{color:#27AE60;border-color:#27AE60;background:rgba(39,174,96,.07);}
+.da-pri{color:var(--gold2);border-color:var(--gold2);background:rgba(212,160,23,.07);}
+.da-rev{color:var(--dim);border-color:var(--dim);background:rgba(107,117,128,.07);}
+
+/* ── CLOSING ── */
+.closing{
+  margin-top:80px;padding:56px 40px;
+  background:linear-gradient(135deg,rgba(139,0,0,.14) 0%,rgba(16,8,8,.97) 100%);
+  border:.5px solid rgba(192,57,43,.22);
+  text-align:center;position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(139,0,0,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,0,0,.05) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.closing::after{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:60%;height:60%;
+  background:radial-gradient(ellipse,rgba(139,0,0,.12) 0%,transparent 70%);
+}
+.closing-inner{position:relative;z-index:2;}
+.cl-tag{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:4px;color:var(--dim);display:block;margin-bottom:28px;
+}
+.cl-phrase{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(16px,3vw,26px);font-weight:700;
+  color:var(--ghost);letter-spacing:1px;line-height:1.6;margin-bottom:24px;
+  min-height:4.8em;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:4px;
+}
+.cl-phrase em{color:var(--ember);font-style:normal;}
+.cl-div{
+  width:200px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+  margin:20px auto;
+}
+.cl-quote{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(14px,2.2vw,20px);font-weight:700;
+  color:var(--ghost);line-height:1.7;font-style:italic;
+  margin-bottom:20px;min-height:3.4em;
+  display:flex;align-items:center;justify-content:center;
+}
+.cl-quote .w1{color:var(--ember);}
+.cl-quote .w2{color:var(--gold2);}
+.cl-quote .w3{color:#27AE60;}
+.cl-pillars{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0;
+}
+.cl-pill{
+  font-family:'Orbitron',monospace;font-size:8px;font-weight:700;
+  letter-spacing:2px;color:var(--gold2);
+  padding:6px 14px;border:.5px solid rgba(212,160,23,.3);
+  background:rgba(212,160,23,.05);
+}
+.cl-seal{
+  font-family:'Share Tech Mono',monospace;font-size:9px;
+  letter-spacing:4px;color:var(--dim);margin-top:24px;
+}
+.cl-badge{
+  display:inline-block;margin-top:12px;
+  font-family:'Share Tech Mono',monospace;font-size:8px;
+  letter-spacing:2px;color:var(--blood);
+  border:.5px solid var(--blood);padding:5px 12px;
+  background:rgba(139,0,0,.08);
+}
+
+/* ── SECTION REVEAL ── */
+.section{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.section.visible{opacity:1;transform:translateY(0);}
+
+/* ── LANG TRANSITION CONTENT ── */
+.lang-switch-content{transition:opacity .15s ease;}
+.lang-switch-content.fading{opacity:0;}
+
+/* ── PT/EN/ES COLOR ACCENTS ON LANG BAR ── */
+#rogi-manifesto.lang-pt .lang-bar{border-bottom-color:rgba(0,156,59,.25);}
+#rogi-manifesto.lang-en .lang-bar{border-bottom-color:rgba(178,34,52,.25);}
+#rogi-manifesto.lang-es .lang-bar{border-bottom-color:rgba(170,21,27,.25);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .lb-brand{display:none;}
+  .lb-status{display:none;}
+  .lang-btn{padding:5px 10px;font-size:9px;}
+  .doc-#rogi-manifesto {padding:0 16px 80px;}
+}
   </style>
 </head>
 <body>
 
-  <!-- ══ TOP NAV ══ -->
+  <!-- TOP NAV -->
   <nav class="topnav">
-    <span class="nav-brand" onclick="showSection('home')">IVISION GAMES</span>
-
+    <span class="nav-brand" onclick="window.location.href='/jogos/index.html'">IVISION GAMES</span>
     <div class="nav-links">
-      <button class="nav-btn active"    onclick="showSection('home')">🏠 Início</button>
+      <button class="nav-btn" onclick="window.location.href='/index.html'">🏠 Início</button>
       <button class="nav-btn"           onclick="showSection('uniao')">🎮 União Master</button>
       <button class="nav-btn rogi-btn"  onclick="showSection('rogi')">⚔ ROGI</button>
     </div>
-
     <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
-
-  <!-- mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="nav-btn" onclick="showSection('home');  toggleMobile()">🏠 Início</button>
-    <button class="nav-btn" onclick="showSection('uniao'); toggleMobile()">🎮 União Master</button>
-    <button class="nav-btn rogi-btn" onclick="showSection('rogi'); toggleMobile()">⚔ ROGI</button>
+    <button class="nav-btn" onclick="window.location.href='/index.html'">🏠 Início</button>
+    <button class="nav-btn" onclick="showSection('uniao');toggleMobile()">🎮 União Master</button>
+    <button class="nav-btn rogi-btn" onclick="showSection('rogi');toggleMobile()">⚔ ROGI</button>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SECTION: HOME
-  ══════════════════════════════════════ -->
+  <!-- ══ HOME ══ -->
   <div id="sec-home" class="section-page active">
     <div class="hero">
       <div class="hero-placeholder">🎮</div>
       <h1>IVISION GAMES</h1>
       <p>Plataforma central para alianças, sistemas de governança e comunidades de jogos.</p>
     </div>
-
     <div class="home-cards">
       <div class="home-card uniao" onclick="showSection('uniao')">
         <span class="hc-icon">🏆</span>
@@ -466,7 +759,6 @@
         <p class="hc-desc">Dicas exclusivas, estratégias e material de ouro para membros da União Master no Coin Master.</p>
         <span class="hc-badge">Coin Master</span>
       </div>
-
       <div class="home-card rogi" onclick="showSection('rogi')">
         <span class="hc-icon">⚔️</span>
         <div class="hc-title">ROGI — PGS</div>
@@ -474,31 +766,25 @@
         <span class="hc-badge">Last War: Survival</span>
       </div>
     </div>
-
     <footer>
       <p><strong>IVision Games</strong></p>
       <p style="margin-top:0.4rem;">&copy; 2025 IVision Produções • Todos os direitos reservados</p>
     </footer>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SECTION: UNIÃO MASTER
-  ══════════════════════════════════════ -->
+  <!-- ══ UNIÃO MASTER ══ -->
   <div id="sec-uniao" class="section-page">
     <div class="section-header">
       <h1>🎮 IVision Games</h1>
       <p>União Master — Dicas de Ouro para Coin Master</p>
     </div>
-
     <main>
       <div class="logo-section">
-        <img src="imagens/logo-uniao-master.png" alt="União Master" class="logo-uniao"
-             onerror="this.outerHTML='<div style=\'width:160px;height:160px;border-radius:50%;border:4px solid #FFC857;background:rgba(255,200,87,0.1);display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto;\'>🏆</div>'">
+        <img src="images/logo-uniao-master.png" alt="União Master" class="logo-uniao"
+             onerror="this.outerHTML='<div style=&quot;width:160px;height:160px;border-radius:50%;border:4px solid #FFC857;background:rgba(255,200,87,0.1);display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto;&quot;>🏆</div>'">
       </div>
-
       <h2 class="section-title">⭐ Dicas de Ouro</h2>
       <p class="section-subtitle">Material exclusivo para membros da União Master</p>
-
       <div class="dicas-grid">
         <div class="dica-card" onclick="window.location.href='dicas/navegador.html?dica=drop-martelos.html'">
           <span class="dica-icon">🎯</span>
@@ -506,36 +792,31 @@
           <p class="dica-description">Entenda como funciona o sistema de drop dos martelos e maximize seus giros durante os eventos da equipe.</p>
           <span class="dica-status">Disponível</span>
         </div>
-
-        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve!')">
           <span class="dica-icon">💰</span>
           <h3 class="dica-title">Gestão de Moedas</h3>
           <p class="dica-description">Aprenda a gerenciar suas moedas de forma eficiente e evite desperdícios desnecessários.</p>
           <span class="dica-status em-breve">Em Breve</span>
         </div>
-
-        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve!')">
           <span class="dica-icon">🛡️</span>
           <h3 class="dica-title">Defesa Estratégica</h3>
           <p class="dica-description">Descubra as melhores estratégias para proteger sua vila de ataques e raids.</p>
           <span class="dica-status em-breve">Em Breve</span>
         </div>
-
-        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve!')">
           <span class="dica-icon">🎰</span>
           <h3 class="dica-title">Otimização de Spins</h3>
           <p class="dica-description">Quando e como usar seus spins para obter o máximo de benefícios no jogo.</p>
           <span class="dica-status em-breve">Em Breve</span>
         </div>
-
-        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve!')">
           <span class="dica-icon">🃏</span>
           <h3 class="dica-title">Sistema de Cartas</h3>
           <p class="dica-description">Guia completo sobre colecionar, trocar e maximizar suas cartas no jogo.</p>
           <span class="dica-status em-breve">Em Breve</span>
         </div>
-
-        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve! Nova dica chegando...')">
+        <div class="dica-card" style="opacity:0.65;cursor:not-allowed;" onclick="alert('🔜 Em breve!')">
           <span class="dica-icon">👥</span>
           <h3 class="dica-title">Trabalho em Equipe</h3>
           <p class="dica-description">Como contribuir melhor para os eventos de equipe e ajudar a União Master a vencer.</p>
@@ -543,7 +824,6 @@
         </div>
       </div>
     </main>
-
     <footer>
       <p><strong>🔰 União Master</strong></p>
       <p style="margin-top:0.4rem;">Força, Honra e Lealdade!</p>
@@ -551,76 +831,744 @@
     </footer>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SECTION: ROGI
-  ══════════════════════════════════════ -->
+  <!-- ══ ROGI MANIFESTO (inline, no iframe) ══ -->
   <div id="sec-rogi" class="section-page">
-    <div class="rogi-container">
-      <iframe
-        id="rogiFrame"
-        class="rogi-frame"
-        src=""
-        data-src="manifesto/index.html"
-        title="ROGI-PGS — Manifesto Oficial"
-        loading="lazy"
-      ></iframe>
+<div id="rogi-manifesto" class="lang-pt" style="position:relative;min-height:100vh;">
+<div class="lang-overlay" id="overlay"></div>
+
+<!-- ══ LANGUAGE BAR ══ -->
+<div class="lang-bar">
+  <div class="lb-brand">ROGI · PGS</div>
+  <div class="lb-langs">
+    <button class="lang-btn pt active" onclick="switchLang('pt')">🇧🇷 PT-BR</button>
+    <button class="lang-btn en" onclick="switchLang('en')">🇺🇸 EN</button>
+    <button class="lang-btn es" onclick="switchLang('es')">🇪🇸 ES</button>
+  </div>
+  <div class="lb-status">
+    <div class="lb-dot"></div>
+    <span id="status-text">SISTEMA ATIVO</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     COVER
+══════════════════════════════════════ -->
+<div class="cover">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+
+  <div class="cover-badge">
+    <span data-lang="pt">CLASSIFICADO: LIDERANÇA</span>
+    <span data-lang="en">CLASSIFIED: LEADERSHIP</span>
+    <span data-lang="es">CLASIFICADO: LIDERAZGO</span>
+  </div>
+
+  <div class="cover-inner lang-switch-content">
+    <div class="sys-label">
+      <span data-lang="pt">▸ SISTEMA DE GOVERNANÇA ESTRATÉGICA ◂</span>
+      <span data-lang="en">▸ STRATEGIC GOVERNANCE SYSTEM ◂</span>
+      <span data-lang="es">▸ SISTEMA DE GOBERNANZA ESTRATÉGICA ◂</span>
+    </div>
+
+    <div class="emblem">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="47" stroke="#C9960F" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <path d="M50 10 L78 22 L78 54 C78 70 65 82 50 90 C35 82 22 70 22 54 L22 22 Z" fill="rgba(139,0,0,0.2)" stroke="#C0392B" stroke-width="1.5"/>
+        <path d="M50 20 L70 30 L70 52 C70 64 61 73 50 80 C39 73 30 64 30 52 L30 30 Z" fill="rgba(139,0,0,0.08)" stroke="rgba(192,57,43,0.4)" stroke-width="0.8"/>
+        <text x="50" y="60" font-family="'Orbitron',monospace" font-size="26" font-weight="900" fill="#EAEAEA" text-anchor="middle">R</text>
+        <text x="50" y="88" font-family="'Share Tech Mono',monospace" font-size="5.5" fill="#C9960F" text-anchor="middle" letter-spacing="2">ROGI · PGS</text>
+        <circle cx="50" cy="15" r="1.8" fill="#C9960F"/>
+        <circle cx="28" cy="24" r="1.3" fill="#C9960F" opacity="0.5"/>
+        <circle cx="72" cy="24" r="1.3" fill="#C9960F" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="cover-rogi">ROGI</div>
+    <div class="cover-pgs">Performance Governance System</div>
+
+    <div class="cover-divider"><span></span><i></i><i></i><i></i><span></span></div>
+
+    <div class="cover-subtitle">
+      <span data-lang="pt">Manual Estratégico e Operacional<br>para Liderança e Gestão da Aliança</span>
+      <span data-lang="en">Strategic and Operational Manual<br>for Alliance Leadership and Management</span>
+      <span data-lang="es">Manual Estratégico y Operacional<br>para el Liderazgo y Gestión de la Alianza</span>
+    </div>
+
+    <div class="cover-tagline">
+      <span data-lang="pt">Uma aliança forte não depende apenas de poder — depende de justiça, disciplina e estratégia.</span>
+      <span data-lang="en">A strong alliance does not rely on power alone — it depends on justice, discipline and strategy.</span>
+      <span data-lang="es">Una alianza fuerte no depende solo del poder — depende de justicia, disciplina y estrategia.</span>
+    </div>
+
+    <div class="cover-meta">
+      <div class="meta-item">
+        <span class="label"><span data-lang="pt">VERSÃO</span><span data-lang="en">VERSION</span><span data-lang="es">VERSIÓN</span></span>
+        <span class="value">OFFICIAL v1.0</span>
+      </div>
+      <div class="meta-item">
+        <span class="label"><span data-lang="pt">CLASSIFICAÇÃO</span><span data-lang="en">CLASSIFICATION</span><span data-lang="es">CLASIFICACIÓN</span></span>
+        <span class="value"><span data-lang="pt">LIDERANÇA</span><span data-lang="en">LEADERSHIP</span><span data-lang="es">LIDERAZGO</span></span>
+      </div>
+      <div class="meta-item">
+        <span class="label">STATUS</span>
+        <span class="value"><span data-lang="pt">ATIVO</span><span data-lang="en">ACTIVE</span><span data-lang="es">ACTIVO</span></span>
+      </div>
+      <div class="meta-item">
+        <span class="label"><span data-lang="pt">PLATAFORMA</span><span data-lang="en">PLATFORM</span><span data-lang="es">PLATAFORMA</span></span>
+        <span class="value">LAST WAR: SURVIVAL</span>
+      </div>
     </div>
   </div>
 
+  <div class="scroll-cta">
+    <span><span data-lang="pt">ACESSAR MANUAL</span><span data-lang="en">ACCESS MANUAL</span><span data-lang="es">ACCEDER AL MANUAL</span></span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     DOC BODY
+══════════════════════════════════════ -->
+<div class="doc-body lang-switch-content">
+
+  <!-- ── MOD 01 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 01</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">01</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">APRESENTAÇÃO DO SISTEMA</span><span data-lang="en">SYSTEM OVERVIEW</span><span data-lang="es">PRESENTACIÓN DEL SISTEMA</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">O que é o <span class="accent">ROGI-PGS</span>?</span>
+          <span data-lang="en">What is <span class="accent">ROGI-PGS</span>?</span>
+          <span data-lang="es">¿Qué es el <span class="accent">ROGI-PGS</span>?</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-block">
+      <p data-lang="pt">O <strong>ROGI-PGS</strong> é o sistema oficial de <strong>governança, performance e automação estratégica</strong> da aliança ROGI. Seu propósito é transformar processos administrativos, escalas e avaliações de membros em uma estrutura meritocrática, transparente, auditável, automatizada e escalável. Cada decisão da liderança é respaldada por <strong>dados objetivos, histórico real, consistência e disciplina coletiva</strong>.</p>
+      <p data-lang="en">The <strong>ROGI-PGS</strong> is the official system of <strong>governance, performance and strategic automation</strong> for the ROGI alliance. Its purpose is to transform administrative processes, scheduling and member evaluations into a meritocratic, transparent, auditable, automated and scalable structure. Every leadership decision is backed by <strong>objective data, real track record, consistency and collective discipline</strong>.</p>
+      <p data-lang="es">El <strong>ROGI-PGS</strong> es el sistema oficial de <strong>gobernanza, rendimiento y automatización estratégica</strong> de la alianza ROGI. Su propósito es transformar los procesos administrativos, escalas y evaluaciones de miembros en una estructura meritocrática, transparente, auditable, automatizada y escalable. Cada decisión del liderazgo está respaldada por <strong>datos objetivos, historial real, consistencia y disciplina colectiva</strong>.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar p1">
+        <span class="pillar-icon">📊</span>
+        <div class="pillar-name">PERFORMANCE</div>
+        <div class="pillar-desc">
+          <span data-lang="pt">Indicadores estruturados: VS, Trem, DS, Atividade, Crescimento e Impacto.</span>
+          <span data-lang="en">Structured indicators: VS, Train, DS, Activity, Growth and Impact.</span>
+          <span data-lang="es">Indicadores estructurados: VS, Tren, DS, Actividad, Crecimiento e Impacto.</span>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <span class="pillar-icon">⚖️</span>
+        <div class="pillar-name"><span data-lang="pt">GOVERNANÇA</span><span data-lang="en">GOVERNANCE</span><span data-lang="es">GOBERNANZA</span></div>
+        <div class="pillar-desc">
+          <span data-lang="pt">Elegibilidade, promoções, escalas, rodízio e penalizações com critérios auditáveis.</span>
+          <span data-lang="en">Eligibility, promotions, schedules, rotation and penalties with auditable criteria.</span>
+          <span data-lang="es">Elegibilidad, promociones, escalas, rotación y penalizaciones con criterios auditables.</span>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <span class="pillar-icon">⚙️</span>
+        <div class="pillar-name"><span data-lang="pt">AUTOMAÇÃO</span><span data-lang="en">AUTOMATION</span><span data-lang="es">AUTOMATIZACIÓN</span></div>
+        <div class="pillar-desc">
+          <span data-lang="pt">OCR, consolidação de indicadores, Score automático e dashboards gerenciais.</span>
+          <span data-lang="en">OCR, indicator consolidation, automated Score and management dashboards.</span>
+          <span data-lang="es">OCR, consolidación de indicadores, Puntuación automática y paneles de gestión.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MOD 02 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 02</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">02</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">FILOSOFIA OPERACIONAL</span><span data-lang="en">OPERATIONAL PHILOSOPHY</span><span data-lang="es">FILOSOFÍA OPERACIONAL</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Princípios que <span class="accent">Regem</span> o Sistema</span>
+          <span data-lang="en">Principles that <span class="accent">Govern</span> the System</span>
+          <span data-lang="es">Principios que <span class="accent">Rigen</span> el Sistema</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quotes">
+      <div class="quote-card"><p><span data-lang="pt">Consistência supera picos isolados.</span><span data-lang="en">Consistency outperforms isolated peaks.</span><span data-lang="es">La consistencia supera los picos aislados.</span></p></div>
+      <div class="quote-card"><p><span data-lang="pt">Escala é compromisso; candidatura é oportunidade.</span><span data-lang="en">Scheduling is commitment; candidacy is opportunity.</span><span data-lang="es">La escala es compromiso; la candidatura es oportunidad.</span></p></div>
+      <div class="quote-card"><p><span data-lang="pt">Participação contínua vale mais que desempenho ocasional.</span><span data-lang="en">Continuous participation is worth more than occasional performance.</span><span data-lang="es">La participación continua vale más que el rendimiento ocasional.</span></p></div>
+      <div class="quote-card"><p><span data-lang="pt">Sem atividade, não há confiabilidade.</span><span data-lang="en">Without activity, there is no reliability.</span><span data-lang="es">Sin actividad, no hay confiabilidad.</span></p></div>
+    </div>
+  </div>
+
+  <!-- ── MOD 03 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 03</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">03</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">CLASSIFICAÇÃO DE MEMBROS</span><span data-lang="en">MEMBER CLASSIFICATION</span><span data-lang="es">CLASIFICACIÓN DE MIEMBROS</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Score Geral <span class="accent">0 → 100</span></span>
+          <span data-lang="en">Overall Score <span class="accent">0 → 100</span></span>
+          <span data-lang="es">Puntuación General <span class="accent">0 → 100</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert">
+      <span class="alert-icon">⚠️</span>
+      <span class="alert-text">
+        <span data-lang="pt">O Score Geral integra Performance Estratégica, Disciplina Operacional, Consistência, Engajamento e Impacto Coletivo em uma métrica de 0 a 100. Reclassificação ao fim de cada ciclo.</span>
+        <span data-lang="en">The Overall Score integrates Strategic Performance, Operational Discipline, Consistency, Engagement and Collective Impact into a single 0–100 metric. Reclassification at the end of each evaluation cycle.</span>
+        <span data-lang="es">La Puntuación General integra Rendimiento Estratégico, Disciplina Operacional, Consistencia, Compromiso e Impacto Colectivo en una métrica de 0 a 100. Reclasificación al final de cada ciclo.</span>
+      </span>
+      <span class="alert-tag"><span data-lang="pt">MÉTRICA OFICIAL</span><span data-lang="en">OFFICIAL METRIC</span><span data-lang="es">MÉTRICA OFICIAL</span></span>
+    </div>
+
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th><span data-lang="pt">CLASSE</span><span data-lang="en">CLASS</span><span data-lang="es">CLASE</span></th>
+          <th><span data-lang="pt">FAIXA</span><span data-lang="en">RANGE</span><span data-lang="es">RANGO</span></th>
+          <th><span data-lang="pt">STATUS OPERACIONAL</span><span data-lang="en">OPERATIONAL STATUS</span><span data-lang="es">ESTADO OPERACIONAL</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge b-elite">⭐ ELITE</span></td>
+          <td class="score-range">85 — 100</td>
+          <td class="score-status"><span data-lang="pt">Prioridade máxima · Elegível para todos os cargos</span><span data-lang="en">Maximum priority · Eligible for all positions</span><span data-lang="es">Prioridad máxima · Elegible para todos los cargos</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge b-top">🔥 TOP</span></td>
+          <td class="score-range">70 — 84</td>
+          <td class="score-status"><span data-lang="pt">Alto engajamento · Candidato a promoção</span><span data-lang="en">High engagement · Promotion candidate</span><span data-lang="es">Alto compromiso · Candidato a promoción</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge b-ativo"><span data-lang="pt">✅ ATIVO</span><span data-lang="en">✅ ACTIVE</span><span data-lang="es">✅ ACTIVO</span></span></td>
+          <td class="score-range">55 — 69</td>
+          <td class="score-status"><span data-lang="pt">Membro estável · Participação regular</span><span data-lang="en">Stable member · Regular participation</span><span data-lang="es">Miembro estable · Participación regular</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge b-apoio"><span data-lang="pt">🔵 APOIO</span><span data-lang="en">🔵 SUPPORT</span><span data-lang="es">🔵 APOYO</span></span></td>
+          <td class="score-range">40 — 54</td>
+          <td class="score-status"><span data-lang="pt">Contribuição parcial · Monitoramento ativo</span><span data-lang="en">Partial contribution · Active monitoring</span><span data-lang="es">Contribución parcial · Monitoreo activo</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge b-risco"><span data-lang="pt">🔴 RISCO</span><span data-lang="en">🔴 RISK</span><span data-lang="es">🔴 RIESGO</span></span></td>
+          <td class="score-range">25 — 39</td>
+          <td class="score-status"><span data-lang="pt">Desempenho crítico · Sujeito a rebaixamento</span><span data-lang="en">Critical performance · Subject to demotion</span><span data-lang="es">Rendimiento crítico · Sujeto a descenso</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge b-inat"><span data-lang="pt">⬛ INATIVO</span><span data-lang="en">⬛ INACTIVE</span><span data-lang="es">⬛ INACTIVO</span></span></td>
+          <td class="score-range">0 — 24</td>
+          <td class="score-status"><span data-lang="pt">Sem elegibilidade · Risco de desligamento</span><span data-lang="en">No eligibility · Risk of removal</span><span data-lang="es">Sin elegibilidad · Riesgo de baja</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── MOD 04 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 04</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">04</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">MÉTRICAS OFICIAIS</span><span data-lang="en">OFFICIAL METRICS</span><span data-lang="es">MÉTRICAS OFICIALES</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Indicadores de <span class="accent">Performance</span></span>
+          <span data-lang="en">Performance <span class="accent">Indicators</span></span>
+          <span data-lang="es">Indicadores de <span class="accent">Rendimiento</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ind-grid">
+      <div class="ind-card">
+        <div class="ind-head"><span class="ind-icon">⚔️</span><span class="ind-name">VS — VERSUS</span></div>
+        <ul class="ind-list">
+          <li><span data-lang="pt">Produção estratégica e contexto competitivo</span><span data-lang="en">Strategic output and competitive context</span><span data-lang="es">Producción estratégica y contexto competitivo</span></li>
+          <li><span data-lang="pt">Participação e consistência em batalhas</span><span data-lang="en">Participation and consistency in battles</span><span data-lang="es">Participación y consistencia en batallas</span></li>
+          <li><span data-lang="pt">Resultado WIN / SAVE considerado</span><span data-lang="en">WIN / SAVE result considered</span><span data-lang="es">Resultado WIN / SAVE considerado</span></li>
+        </ul>
+      </div>
+      <div class="ind-card">
+        <div class="ind-head"><span class="ind-icon">🚂</span><span class="ind-name"><span data-lang="pt">TREM</span><span data-lang="en">TRAIN</span><span data-lang="es">TREN</span></span></div>
+        <ul class="ind-list">
+          <li><span data-lang="pt">Disciplina e cumprimento de escala</span><span data-lang="en">Discipline and schedule compliance</span><span data-lang="es">Disciplina y cumplimiento de escala</span></li>
+          <li><span data-lang="pt">Faltas penalizam severamente</span><span data-lang="en">Absences severely penalized</span><span data-lang="es">Las faltas se penalizan gravemente</span></li>
+          <li><span data-lang="pt">Rodízio obrigatório · Escala premium controlada</span><span data-lang="en">Mandatory rotation · Premium schedule controlled</span><span data-lang="es">Rotación obligatoria · Escala premium controlada</span></li>
+        </ul>
+      </div>
+      <div class="ind-card">
+        <div class="ind-head"><span class="ind-icon">🤝</span><span class="ind-name"><span data-lang="pt">DOAÇÃO</span><span data-lang="en">DONATION</span><span data-lang="es">DONACIÓN</span></span></div>
+        <ul class="ind-list">
+          <li><span data-lang="pt">Frequência e consistência de contribuição</span><span data-lang="en">Frequency and consistency of contribution</span><span data-lang="es">Frecuencia y consistencia de contribución</span></li>
+          <li><span data-lang="pt">Regularidade premiada sobre volume pontual</span><span data-lang="en">Regularity rewarded over punctual volume</span><span data-lang="es">La regularidad premia sobre el volumen puntual</span></li>
+        </ul>
+      </div>
+      <div class="ind-card">
+        <div class="ind-head"><span class="ind-icon">🌪️</span><span class="ind-name">DESERT STORM</span></div>
+        <ul class="ind-list">
+          <li><span data-lang="pt">Titulares, reservas e não convocados tratados com justiça</span><span data-lang="en">Starters, reserves and non-selected treated fairly</span><span data-lang="es">Titulares, reservas y no convocados tratados con justicia</span></li>
+          <li><span data-lang="pt">Equipes equalizadas por normalização</span><span data-lang="en">Teams equalized by normalization</span><span data-lang="es">Equipos igualados por normalización</span></li>
+        </ul>
+      </div>
+      <div class="ind-card">
+        <div class="ind-head"><span class="ind-icon">🎯</span><span class="ind-name"><span data-lang="pt">ATIVIDADE</span><span data-lang="en">ACTIVITY</span><span data-lang="es">ACTIVIDAD</span></span></div>
+        <ul class="ind-list">
+          <li><span data-lang="pt">Presença semanal e regularidade</span><span data-lang="en">Weekly presence and regularity</span><span data-lang="es">Presencia semanal y regularidad</span></li>
+          <li><span data-lang="pt">Base de confiabilidade operacional</span><span data-lang="en">Operational reliability baseline</span><span data-lang="es">Base de confiabilidad operacional</span></li>
+        </ul>
+      </div>
+      <div class="ind-card">
+        <div class="ind-head"><span class="ind-icon">📈</span><span class="ind-name"><span data-lang="pt">CRESCIMENTO & IMPACTO</span><span data-lang="en">GROWTH & IMPACT</span><span data-lang="es">CRECIMIENTO & IMPACTO</span></span></div>
+        <ul class="ind-list">
+          <li><span data-lang="pt">Evolução da conta e desenvolvimento sustentável</span><span data-lang="en">Account evolution and sustainable development</span><span data-lang="es">Evolución de cuenta y desarrollo sostenible</span></li>
+          <li><span data-lang="pt">Influência real nos resultados da aliança</span><span data-lang="en">Real influence on alliance results</span><span data-lang="es">Influencia real en los resultados de la alianza</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MOD 05 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 05</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">05</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">OPERAÇÃO FERROVIÁRIA</span><span data-lang="en">RAIL OPERATION</span><span data-lang="es">OPERACIÓN FERROVIARIA</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Sistema de <span class="accent">Escala do Trem</span></span>
+          <span data-lang="en">Train <span class="accent">Schedule System</span></span>
+          <span data-lang="es">Sistema de <span class="accent">Escala del Tren</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert">
+      <span class="alert-icon">🚂</span>
+      <span class="alert-text">
+        <span data-lang="pt">Fila linear por cargo. Rodízio obrigatório. Turno Elite (Sáb/Dom) com Comando Cruzado. Cargos: Condutor · VIP · Vagão A · Vagão B.</span>
+        <span data-lang="en">Linear queue per role. Mandatory rotation. Elite Shift (Sat/Sun) with Cross-Command rules. Roles: Conductor · VIP · Car A · Car B.</span>
+        <span data-lang="es">Cola lineal por cargo. Rotación obligatoria. Turno Elite (Sáb/Dom) con Mando Cruzado. Cargos: Conductor · VIP · Vagón A · Vagón B.</span>
+      </span>
+      <span class="alert-tag"><span data-lang="pt">ROTAÇÃO OBRIGATÓRIA</span><span data-lang="en">MANDATORY ROTATION</span><span data-lang="es">ROTACIÓN OBLIGATORIA</span></span>
+    </div>
+
+    <table class="pen-table">
+      <thead>
+        <tr>
+          <th><span data-lang="pt">INFRAÇÃO</span><span data-lang="en">INFRACTION</span><span data-lang="es">INFRACCIÓN</span></th>
+          <th><span data-lang="pt">CONSEQUÊNCIA</span><span data-lang="en">CONSEQUENCE</span><span data-lang="es">CONSECUENCIA</span></th>
+          <th><span data-lang="pt">SEVERIDADE</span><span data-lang="en">SEVERITY</span><span data-lang="es">SEVERIDAD</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="p-inf"><span data-lang="pt">Falta na escala</span><span data-lang="en">Schedule absence</span><span data-lang="es">Falta en la escala</span></td>
+          <td class="p-high"><span data-lang="pt">Penalidade máxima</span><span data-lang="en">Maximum penalty</span><span data-lang="es">Penalidad máxima</span></td>
+          <td class="p-sev"><span data-lang="pt">CRÍTICO</span><span data-lang="en">CRITICAL</span><span data-lang="es">CRÍTICO</span></td>
+        </tr>
+        <tr>
+          <td class="p-inf"><span data-lang="pt">Invasão de turno</span><span data-lang="en">Shift invasion</span><span data-lang="es">Invasión de turno</span></td>
+          <td class="p-med"><span data-lang="pt">Penalidade moderada/alta</span><span data-lang="en">Moderate/high penalty</span><span data-lang="es">Penalidad moderada/alta</span></td>
+          <td class="p-sev"><span data-lang="pt">ALTO</span><span data-lang="en">HIGH</span><span data-lang="es">ALTO</span></td>
+        </tr>
+        <tr>
+          <td class="p-inf"><span data-lang="pt">Reincidência</span><span data-lang="en">Repeat infraction</span><span data-lang="es">Reincidencia</span></td>
+          <td class="p-prog"><span data-lang="pt">Penalidade progressiva</span><span data-lang="en">Progressive penalty</span><span data-lang="es">Penalidad progresiva</span></td>
+          <td class="p-sev"><span data-lang="pt">PROGRESSIVO</span><span data-lang="en">PROGRESSIVE</span><span data-lang="es">PROGRESIVO</span></td>
+        </tr>
+        <tr>
+          <td class="p-inf"><span data-lang="pt">Monopólio de escala premium</span><span data-lang="en">Premium schedule monopoly</span><span data-lang="es">Monopolio de escala premium</span></td>
+          <td class="p-high"><span data-lang="pt">Exílio Vagão B + penalidade</span><span data-lang="en">Exiled to Car B + penalty</span><span data-lang="es">Exilio Vagón B + penalidad</span></td>
+          <td class="p-sev"><span data-lang="pt">CRÍTICO</span><span data-lang="en">CRITICAL</span><span data-lang="es">CRÍTICO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── MOD 06 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 06</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">06</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">INTEGRIDADE DO SISTEMA</span><span data-lang="en">SYSTEM INTEGRITY</span><span data-lang="es">INTEGRIDAD DEL SISTEMA</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Protocolo <span class="accent">Anti-Jogo</span></span>
+          <span data-lang="en">Anti-Gaming <span class="accent">Protocol</span></span>
+          <span data-lang="es">Protocolo <span class="accent">Anti-Trampa</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="anti-grid">
+      <div class="anti-card">
+        <span class="ac-icon">🎭</span>
+        <div class="ac-title"><span data-lang="pt">Jogo Seletivo</span><span data-lang="en">Selective Play</span><span data-lang="es">Juego Selectivo</span></div>
+        <div class="ac-desc"><span data-lang="pt">Atividade apenas em dias monitorados. O sistema detecta o padrão e aplica penalidade de consistência.</span><span data-lang="en">Activity only on monitored days. The system detects the pattern and applies a consistency penalty.</span><span data-lang="es">Actividad solo en días monitoreados. El sistema detecta el patrón y aplica penalidad de consistencia.</span></div>
+      </div>
+      <div class="anti-card">
+        <span class="ac-icon">📉</span>
+        <div class="ac-title"><span data-lang="pt">Faltas Estratégicas</span><span data-lang="en">Strategic Absences</span><span data-lang="es">Faltas Estratégicas</span></div>
+        <div class="ac-desc"><span data-lang="pt">Ausência proposital para manipular fila de rodízio. Penalização máxima e rebaixamento de prioridade imediato.</span><span data-lang="en">Intentional absence to manipulate the rotation queue. Maximum penalty and immediate priority demotion.</span><span data-lang="es">Ausencia intencional para manipular la cola de rotación. Penalización máxima y descenso de prioridad inmediato.</span></div>
+      </div>
+      <div class="anti-card">
+        <span class="ac-icon">🔒</span>
+        <div class="ac-title"><span data-lang="pt">Monopólio de Vaga</span><span data-lang="en">Slot Monopoly</span><span data-lang="es">Monopolio de Plaza</span></div>
+        <div class="ac-desc"><span data-lang="pt">Ocupação contínua de vagas premium impedindo rodízio justo. Exílio estratégico e perda de elegibilidade.</span><span data-lang="en">Continuous occupation of premium slots blocking fair rotation. Strategic exile and loss of eligibility.</span><span data-lang="es">Ocupación continua de plazas premium bloqueando la rotación justa. Exilio estratégico y pérdida de elegibilidad.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MOD 07 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 07</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">07</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">INFRAESTRUTURA</span><span data-lang="en">INFRASTRUCTURE</span><span data-lang="es">INFRAESTRUCTURA</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Arquitetura <span class="accent">Técnica</span></span>
+          <span data-lang="en">Technical <span class="accent">Architecture</span></span>
+          <span data-lang="es">Arquitectura <span class="accent">Técnica</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card"><span class="tool-icon">📊</span><div class="tool-name">GOOGLE SHEETS</div></div>
+      <div class="tool-card"><span class="tool-icon">⚡</span><div class="tool-name">APPS SCRIPT</div></div>
+      <div class="tool-card"><span class="tool-icon">📱</span><div class="tool-name">APPSHEET</div></div>
+      <div class="tool-card"><span class="tool-icon">🔍</span><div class="tool-name">OCR ENGINE</div></div>
+      <div class="tool-card"><span class="tool-icon">👥</span><div class="tool-name dim"><span data-lang="pt">MEMBROS</span><span data-lang="en">MEMBERS</span><span data-lang="es">MIEMBROS</span></div></div>
+      <div class="tool-card"><span class="tool-icon">🚂</span><div class="tool-name dim"><span data-lang="pt">TREM</span><span data-lang="en">TRAIN</span><span data-lang="es">TREN</span></div></div>
+      <div class="tool-card"><span class="tool-icon">🔄</span><div class="tool-name dim"><span data-lang="pt">CICLO</span><span data-lang="en">CYCLE</span><span data-lang="es">CICLO</span></div></div>
+      <div class="tool-card"><span class="tool-icon">📋</span><div class="tool-name dim">LOG</div></div>
+    </div>
+  </div>
+
+  <!-- ── MOD 08 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 08</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">08</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">IMPACTO INSTITUCIONAL</span><span data-lang="en">INSTITUTIONAL IMPACT</span><span data-lang="es">IMPACTO INSTITUCIONAL</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Benefícios <span class="accent">Estratégicos</span></span>
+          <span data-lang="en">Strategic <span class="accent">Benefits</span></span>
+          <span data-lang="es">Beneficios <span class="accent">Estratégicos</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="benefits">
+      <div class="ben-col">
+        <span class="ben-label"><span data-lang="pt">PARA A ALIANÇA</span><span data-lang="en">FOR THE ALLIANCE</span><span data-lang="es">PARA LA ALIANZA</span></span>
+        <ul class="ben-list">
+          <li><span data-lang="pt">Crescimento sustentável e controlado</span><span data-lang="en">Sustainable and controlled growth</span><span data-lang="es">Crecimiento sostenible y controlado</span></li>
+          <li><span data-lang="pt">Maior engajamento dos membros</span><span data-lang="en">Greater member engagement</span><span data-lang="es">Mayor compromiso de los miembros</span></li>
+          <li><span data-lang="pt">Redução de conflitos internos</span><span data-lang="en">Reduction of internal conflicts</span><span data-lang="es">Reducción de conflictos internos</span></li>
+          <li><span data-lang="pt">Melhor distribuição de recursos</span><span data-lang="en">Better resource distribution</span><span data-lang="es">Mejor distribución de recursos</span></li>
+          <li><span data-lang="pt">Competitividade superior e consistente</span><span data-lang="en">Superior and consistent competitiveness</span><span data-lang="es">Competitividad superior y consistente</span></li>
+        </ul>
+      </div>
+      <div class="ben-col">
+        <span class="ben-label"><span data-lang="pt">PARA A LIDERANÇA</span><span data-lang="en">FOR LEADERSHIP</span><span data-lang="es">PARA EL LIDERAZGO</span></span>
+        <ul class="ben-list">
+          <li><span data-lang="pt">Menor carga manual de gestão</span><span data-lang="en">Reduced manual management load</span><span data-lang="es">Menor carga manual de gestión</span></li>
+          <li><span data-lang="pt">Maior legitimidade nas decisões</span><span data-lang="en">Greater decision legitimacy</span><span data-lang="es">Mayor legitimidad en las decisiones</span></li>
+          <li><span data-lang="pt">Governança estruturada e profissional</span><span data-lang="en">Structured and professional governance</span><span data-lang="es">Gobernanza estructurada y profesional</span></li>
+          <li><span data-lang="pt">Decisões auditáveis e rastreáveis</span><span data-lang="en">Auditable and traceable decisions</span><span data-lang="es">Decisiones auditables y trazables</span></li>
+          <li><span data-lang="pt">Segurança decisória baseada em dados</span><span data-lang="en">Data-driven decision security</span><span data-lang="es">Seguridad decisoria basada en datos</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MOD 09 ── -->
+  <div class="mod-sep"><div class="mod-sep-line"></div>
+    <div class="mod-sep-label">// <span data-lang="pt">MÓDULO</span><span data-lang="en">MODULE</span><span data-lang="es">MÓDULO</span> 09</div>
+  <div class="mod-sep-line"></div></div>
+
+  <div class="section">
+    <div class="ch">
+      <div class="ch-num">09</div>
+      <div>
+        <span class="ch-tag">// <span data-lang="pt">PROTOCOLO DE EVOLUÇÃO</span><span data-lang="en">EVOLUTION PROTOCOL</span><span data-lang="es">PROTOCOLO DE EVOLUCIÓN</span></span>
+        <div class="ch-title">
+          <span data-lang="pt">Diretrizes de <span class="accent">Evolução</span></span>
+          <span data-lang="en">Evolution <span class="accent">Guidelines</span></span>
+          <span data-lang="es">Directrices de <span class="accent">Evolución</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="directive">
+      <div class="dir-row">
+        <span class="dir-q"><span data-lang="pt">Isso aumenta justiça?</span><span data-lang="en">Does this increase fairness?</span><span data-lang="es">¿Esto aumenta la justicia?</span></span>
+        <span class="dir-a da-yes"><span data-lang="pt">SIM → IMPLEMENTAR</span><span data-lang="en">YES → IMPLEMENT</span><span data-lang="es">SÍ → IMPLEMENTAR</span></span>
+      </div>
+      <div class="dir-row">
+        <span class="dir-q"><span data-lang="pt">Isso reduz manipulação?</span><span data-lang="en">Does this reduce manipulation?</span><span data-lang="es">¿Esto reduce la manipulación?</span></span>
+        <span class="dir-a da-yes"><span data-lang="pt">SIM → IMPLEMENTAR</span><span data-lang="en">YES → IMPLEMENT</span><span data-lang="es">SÍ → IMPLEMENTAR</span></span>
+      </div>
+      <div class="dir-row">
+        <span class="dir-q"><span data-lang="pt">Isso fortalece meritocracia?</span><span data-lang="en">Does this strengthen meritocracy?</span><span data-lang="es">¿Esto fortalece la meritocracia?</span></span>
+        <span class="dir-a da-pri"><span data-lang="pt">SIM → PRIORIDADE</span><span data-lang="en">YES → PRIORITY</span><span data-lang="es">SÍ → PRIORIDAD</span></span>
+      </div>
+      <div class="dir-row">
+        <span class="dir-q"><span data-lang="pt">Isso melhora sustentabilidade?</span><span data-lang="en">Does this improve sustainability?</span><span data-lang="es">¿Esto mejora la sostenibilidad?</span></span>
+        <span class="dir-a da-pri"><span data-lang="pt">SIM → PRIORIDADE</span><span data-lang="en">YES → PRIORITY</span><span data-lang="es">SÍ → PRIORIDAD</span></span>
+      </div>
+      <div class="dir-row">
+        <span class="dir-q"><span data-lang="pt">Alguma resposta acima foi NÃO?</span><span data-lang="en">Was any answer above NO?</span><span data-lang="es">¿Alguna respuesta fue NO?</span></span>
+        <span class="dir-a da-rev"><span data-lang="pt">NÃO → REVISAR</span><span data-lang="en">NO → REVIEW</span><span data-lang="es">NO → REVISAR</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLOSING MANIFESTO ── -->
+  <div class="closing section">
+    <div class="closing-inner">
+      <div class="cl-tag">
+        <span data-lang="pt">▸ DECLARAÇÃO INSTITUCIONAL OFICIAL ◂</span>
+        <span data-lang="en">▸ OFFICIAL INSTITUTIONAL DECLARATION ◂</span>
+        <span data-lang="es">▸ DECLARACIÓN INSTITUCIONAL OFICIAL ◂</span>
+      </div>
+
+      <div class="cl-phrase">
+        <span data-lang="pt">O ROGI-PGS não é apenas um sistema de escala.<br>É uma <em>plataforma de governança competitiva</em> —<br>a profissionalização estrutural da aliança.</span>
+        <span data-lang="en">ROGI-PGS is not merely a scheduling system.<br>It is a <em>competitive governance platform</em> —<br>the structural professionalization of the alliance.</span>
+        <span data-lang="es">El ROGI-PGS no es solo un sistema de escala.<br>Es una <em>plataforma de gobernanza competitiva</em> —<br>la profesionalización estructural de la alianza.</span>
+      </div>
+
+      <div class="cl-div"></div>
+
+      <div class="cl-quote">
+        <span data-lang="pt">"Uma aliança forte não depende apenas de poder —<br>depende de <span class="w1">justiça</span>, <span class="w2">disciplina</span> e <span class="w3">estratégia</span>."</span>
+        <span data-lang="en">"A strong alliance does not rely on power alone —<br>it depends on <span class="w1">justice</span>, <span class="w2">discipline</span> and <span class="w3">strategy</span>."</span>
+        <span data-lang="es">"Una alianza fuerte no depende solo del poder —<br>depende de <span class="w1">justicia</span>, <span class="w2">disciplina</span> y <span class="w3">estrategia</span>."</span>
+      </div>
+
+      <div class="cl-pillars">
+        <span class="cl-pill"><span data-lang="pt">ESTRUTURANDO MÉRITO</span><span data-lang="en">STRUCTURING MERIT</span><span data-lang="es">ESTRUCTURANDO MÉRITO</span></span>
+        <span class="cl-pill"><span data-lang="pt">AUTOMATIZANDO EXCELÊNCIA</span><span data-lang="en">AUTOMATING EXCELLENCE</span><span data-lang="es">AUTOMATIZANDO EXCELENCIA</span></span>
+        <span class="cl-pill"><span data-lang="pt">SUSTENTANDO LIDERANÇA</span><span data-lang="en">SUSTAINING LEADERSHIP</span><span data-lang="es">SOSTENIENDO EL LIDERAZGO</span></span>
+      </div>
+
+      <div class="cl-div"></div>
+
+      <div class="cl-seal">ROGI-PGS · <span data-lang="pt">VERSÃO OFICIAL</span><span data-lang="en">OFFICIAL VERSION</span><span data-lang="es">VERSIÓN OFICIAL</span> v1.0 · LAST WAR: SURVIVAL</div>
+      <div class="cl-badge">
+        <span data-lang="pt">DESTINADO A: LÍDERES · OPERADORES · GESTORES</span>
+        <span data-lang="en">INTENDED FOR: LEADERS · OPERATORS · MANAGERS</span>
+        <span data-lang="es">DESTINADO A: LÍDERES · OPERADORES · GESTORES</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /doc-body -->
+
+<script>
+const LANGS = {
+  pt: { status:'SISTEMA ATIVO',    badge:'CLASSIFICADO: LIDERANÇA' },
+  en: { status:'SYSTEM ACTIVE',    badge:'CLASSIFIED: LEADERSHIP'  },
+  es: { status:'SISTEMA ACTIVO',   badge:'CLASIFICADO: LIDERAZGO'  }
+};
+
+function switchLang(lang) {
+  const overlay = document.getElementById('overlay');
+  const contents = document.querySelectorAll('.lang-switch-content');
+
+  // fade out
+  overlay.classList.add('active');
+  contents.forEach(el => el.classList.add('fading'));
+
+  setTimeout(() => {
+    // switch
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+
+    // update buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.classList.contains(lang));
+    });
+
+    // update status
+    document.getElementById('status-text').textContent = LANGS[lang].status;
+
+    // fade in
+    contents.forEach(el => el.classList.remove('fading'));
+    overlay.classList.remove('active');
+
+    // re-trigger scroll reveals
+    observeSections();
+  }, 200);
+}
+
+// Intersection observer for section reveals
+function observeSections() {
+  const sections = document.querySelectorAll('.section');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  sections.forEach(s => {
+    if(!s.classList.contains('visible')) io.observe(s);
+    else s.classList.add('visible');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  observeSections();
+});
+</script>
+</div>
+  </div>
+
+  <!-- ══ INDEX SCRIPT ══ -->
   <script>
-    const sections = ['home', 'uniao', 'rogi'];
-    const navBtns  = document.querySelectorAll('.topnav .nav-btn, .mobile-menu .nav-btn');
+    const SECTIONS = ['home','uniao','rogi'];
 
     function showSection(id) {
-      // pages
-      sections.forEach(s => {
-        document.getElementById('sec-' + s).classList.toggle('active', s === id);
+      SECTIONS.forEach(s => {
+        document.getElementById('sec-'+s).classList.toggle('active', s===id);
       });
-
-      // nav highlight
-      navBtns.forEach(btn => {
-        const targets = { home:'home', uniao:'uniao', rogi:'rogi' };
-        const match = btn.textContent.toLowerCase();
-        const isActive =
-          (id === 'home'  && match.includes('início'))  ||
-          (id === 'uniao' && match.includes('união'))   ||
-          (id === 'rogi'  && match.includes('rogi'));
-        btn.classList.toggle('active', isActive);
-      });
-
-      // lazy-load iframe only on first visit
-      if (id === 'rogi') {
-        const frame = document.getElementById('rogiFrame');
-        if (!frame.src || frame.src === window.location.href) {
-          frame.src = frame.dataset.src;
+      document.querySelectorAll('.topnav .nav-btn, .mobile-menu .nav-btn').forEach(btn => {
+        const t = btn.textContent.toLowerCase();
+        const active =
+          (id==='home'  && t.includes('início'))  ||
+          (id==='uniao' && t.includes('união'))   ||
+          (id==='rogi'  && t.includes('rogi'));
+        btn.classList.toggle('active', active);
+        if(btn.classList.contains('rogi-btn') && active) {
+          btn.classList.add('active');
         }
-        // auto-resize
-        frame.onload = () => {
-          try {
-            const h = frame.contentWindow.document.body.scrollHeight;
-            if (h > 0) frame.style.height = h + 'px';
-          } catch(e) {
-            frame.style.height = '100vh';
-          }
-        };
-      }
-
-      // scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // update URL hash silently
-      history.replaceState(null, '', '#' + id);
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+      history.replaceState(null,'','#'+id);
+      if(id==='rogi') observeSections();
     }
 
     function toggleMobile() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
 
-    // restore section from URL hash on load
     window.addEventListener('DOMContentLoaded', () => {
-      const hash = location.hash.replace('#', '');
-      if (sections.includes(hash)) showSection(hash);
+      const hash = location.hash.replace('#','');
+      if(SECTIONS.includes(hash)) showSection(hash);
     });
   </script>
+
+  <!-- ══ ROGI SCRIPT (scoped) ══ -->
+  <script>
+    function rogiSetLang(lang) {
+      var rm = document.getElementById('rogi-manifesto');
+      if(rm) rm.className = 'lang-' + lang;
+    }
+
+    const LANGS = {
+  pt: { status:'SISTEMA ATIVO',    badge:'CLASSIFICADO: LIDERANÇA' },
+  en: { status:'SYSTEM ACTIVE',    badge:'CLASSIFIED: LEADERSHIP'  },
+  es: { status:'SISTEMA ACTIVO',   badge:'CLASIFICADO: LIDERAZGO'  }
+};
+
+function switchLang(lang) {
+  const overlay = document.getElementById('overlay');
+  const contents = document.querySelectorAll('.lang-switch-content');
+
+  // fade out
+  overlay.classList.add('active');
+  contents.forEach(el => el.classList.add('fading'));
+
+  setTimeout(() => {
+    // switch
+    var rm=document.getElementById('rogi-manifesto'); if(rm){rm.className='lang-'+lang;}  
+    // lang attr scoped
+
+    // update buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.classList.contains(lang));
+    });
+
+    // update status
+    document.getElementById('status-text').textContent = LANGS[lang].status;
+
+    // fade in
+    contents.forEach(el => el.classList.remove('fading'));
+    overlay.classList.remove('active');
+
+    // re-trigger scroll reveals
+    observeSections();
+  }, 200);
+}
+
+// Intersection observer for section reveals
+function observeSections() {
+  const sections = document.querySelectorAll('.section');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  sections.forEach(s => {
+    if(!s.classList.contains('visible')) io.observe(s);
+    else s.classList.add('visible');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  observeSections();
+});
+
+    function observeSections() {
+      const sections = document.querySelectorAll('#rogi-manifesto .section');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, {threshold:0.07});
+      sections.forEach(s => {
+        if(!s.classList.contains('visible')) io.observe(s);
+        else s.classList.add('visible');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      observeSections();
+    });
+  </script>
+
 </body>
 </html>
